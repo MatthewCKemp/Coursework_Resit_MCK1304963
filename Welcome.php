@@ -8,7 +8,7 @@ or die("Unable to connect");
 ?>
 
 <!DOCTYPE html>
-<html xmlns="http://mck1304963cwresit.azurewebsites.net"/>
+<html xmlns="http://mck1304963cwresit.azurewebsites.net/Welcome.php"/>
 <head>
     <title>Welcome</title>
     <link href="style/index-layout.css" rel="stylesheet" type="text/css" />
