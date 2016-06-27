@@ -24,7 +24,7 @@
            // echo " DB Selected successfully";
 
             //SQL query
-            $query = "SELECT user_ID, name FROM Users";
+            $query = "SELECT user_ID, name FROM Users ORDER BY user_ID DESC";
             $result = mysqli_query($conn, $query);
             
             if (mysqli_num_rows($result) > 0) {  //breaks result into different rows for each one.
