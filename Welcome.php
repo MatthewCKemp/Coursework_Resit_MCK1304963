@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang=en">
     <head>
-        <meta charset=""UTF-8">
-        <title>Test</title>
+        <meta charset="UTF-8">
+        <title>Welcome to Bugsplat</title>
     </head>
         <body>
             <?php
@@ -12,7 +12,7 @@
 
             // Create connection to DB
             $conn = mysqli_connect($servername, $username, $password);
-
+            $select = mysqli_select_db("mck1304963_cwrs_db");
             // Check the connection
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
