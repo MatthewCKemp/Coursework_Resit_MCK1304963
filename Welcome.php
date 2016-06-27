@@ -18,6 +18,10 @@
                 die("Connection failed: " . mysqli_connect_error());
             }
             echo "Connected successfully";
+            if (!$select) {
+                die("Selection failed: " . mysqli_connect_error());
+            }
+            echo "DB Selected successfully";
             ?>
         </body>
 </html>
