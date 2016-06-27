@@ -13,7 +13,7 @@
             // Create connection to DB
             $conn = mysqli_connect($servername, $username, $password);
             $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
-            // Check the connection
+            // Check the connectionas
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
@@ -21,7 +21,20 @@
             if (!$select) {
                 die(" Selection failed: " . mysqli_connect_error());
             }
-            echo "DB Selected successfully";
+            echo " DB Selected successfully";
+
+            //SQL query
+            $query = "SELECT user_ID, name FROM Users";
+            $result = mysqli_query($conn, $query);
+            
+            if (mysqli_num_rows($result) > 0) {  //breaks result into different rows for each one.
+                while ($rows = mysqli_fetch_assoc($result)) {
+                    echo "User's ID:" . $rows["user_ID"] . " Name: " . $rows["name"] . "<br>";
+                }
+            } else {
+                echo "no results found";
+            }
+            mysqli_close($conn);
             ?>
         </body>
 </html>
