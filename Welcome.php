@@ -12,14 +12,14 @@
 
             // Create connection to DB
             $conn = mysqli_connect($servername, $username, $password);
-            $select = mysqli_select_db("mck1304963_cwrs_db");
+            $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
             // Check the connection
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
             echo "Connected successfully";
             if (!$select) {
-                die("Selection failed: " . mysqli_connect_error());
+                die(" Selection failed: " . mysqli_connect_error());
             }
             echo "DB Selected successfully";
             ?>
