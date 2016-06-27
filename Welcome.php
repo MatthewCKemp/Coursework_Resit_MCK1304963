@@ -17,11 +17,11 @@
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-            echo "Connected successfully";
+            //echo "Connected successfully";
             if (!$select) {
                 die(" Selection failed: " . mysqli_connect_error());
             }
-            echo " DB Selected successfully";
+           // echo " DB Selected successfully";
 
             //SQL query
             $query = "SELECT user_ID, name FROM Users";
