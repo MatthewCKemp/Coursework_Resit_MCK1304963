@@ -2,7 +2,7 @@
 <html lang=en">
     <head>
         <meta charset="UTF-8">
-        <title>Welcome to Bugsplat</title>
+        <title>BugSplat: Create a New Bug</title>
     </head>
         <body>
             <?php
@@ -17,12 +17,24 @@
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-            echo "Connected successfully";
+            //echo "Connected successfully";
             if (!$select) {
                 die(" Selection failed: " . mysqli_connect_error());
             }
-            echo " DB Selected successfully";
+            //echo " DB Selected successfully";
             mysqli_close($conn);
             ?>
+
+            <form action="BugCreationForm.php" method="post">
+                Title of Bug: <input type="text" name="B_title"><br>
+                Description (50char max): <input type="text" name="B_Desc"><br>
+                Author name: <input type="text" name="B_Author"><br>
+                <input type="submit">
+            </form>
+
+            Arite min, <?php echo $_POST["B_title"]; ?><br>
+            <?php echo $_POST["B_Desc"]; ?><br>
+            <?php echo $_POST["B_Author"]; ?><br>
+            <?php echo date("Y");?>
         </body>
 </html>
