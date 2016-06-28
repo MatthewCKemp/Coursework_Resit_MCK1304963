@@ -2,7 +2,7 @@
 <html lang=en">
     <head>
         <meta charset="UTF-8">
-        <title>BugSplat: Create a New Bug</title>
+        <title>BugSplat:Create a New Bug</title>
     </head>
         <body>
             <?php
