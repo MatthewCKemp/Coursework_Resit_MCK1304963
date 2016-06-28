@@ -29,25 +29,24 @@
                 Title of Bug: <input type="text" name="B_title"><br>
                 Description (50char max): <input type="text" name="B_Desc"><br>
                 Author name: <input type="text" name="B_Author"><br>
-                <input type="submit">
+                <input type="submit" value ="Submit">
             </form>
 
             <?php echo "Title " . $_POST["B_title"]; ?><br>
             <?php echo "Description " .$_POST["B_Desc"]; ?><br>
             <?php echo "Author " . $_POST["B_Author"]; ?><br>
-            <?php echo "Date " . date("d-m-Y");
+            <?php echo "Date " . ("d-m-Y");
 
             $BugTitle = mysqli_real_escape_string($conn, $_POST["B_Title"]);
             $BugDesc = mysqli_real_escape_string($conn, $_POST["B_Desc"]);
             $BugAuthor = mysqli_real_escape_string($conn, $_POST["B_Author"]);
-            $BugDate = mysqli_real_escape_string($conn, date ("d-m-Y)"));
+            $BugDate = mysqli_real_escape_string($conn, ("d-m-Y)"));
 
-            $Insert = "INSERT INTO Bugs (title, description, dateposted)
-                VALUES ($BugTitle, $BugDesc , $BugDate)";
+            $Insert = "INSERT INTO Bugs (title, description, dateposted) VALUES ('$BugTitle', '$BugDesc', '$BugDate')";
                 if(mysqli_query($conn, $Insert)){
                     echo "Data successfully inserted.";
                 } else {
-                    echo "ERROR: Unable to insert data";
+                    echo "ERROR: Unable to insert data" . mysqli_error($conn);
                 }
             mysqli_close($conn);
             ?>
