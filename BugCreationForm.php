@@ -2,7 +2,7 @@
 <html lang=en">
     <head>
         <meta charset="UTF-8">
-        <title>BugSplat:Create a New Bug</title>
+        <title>BugSplat: Create a New Bug</title>
     </head>
         <body>
             <?php
@@ -32,9 +32,9 @@
                 <input type="submit">
             </form>
 
-            Arite min, <?php echo $_POST["B_title"]; ?><br>
+            <?php echo $_POST["B_title"]; ?><br>
             <?php echo $_POST["B_Desc"]; ?><br>
             <?php echo $_POST["B_Author"]; ?><br>
-            <?php echo date("Y");?>
+            <?php echo date("d-m-Y");?>
         </body>
 </html>
