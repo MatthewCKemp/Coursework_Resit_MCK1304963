@@ -17,19 +17,19 @@
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-            //echo "Connected successfully";
+            echo "Connected successfully";
             if (!$select) {
                 die(" Selection failed: " . mysqli_connect_error());
             }
-           // echo " DB Selected successfully";
+            echo " DB Selected successfully";
 
             //SQL query
-            $query = "SELECT title, bugposted, FROM Bugs ORDER BY bugposted DESC";
+            $query = "SELECT user_ID, name FROM Users ORDER BY user_ID DESC";
             $result = mysqli_query($conn, $query);
             
             if (mysqli_num_rows($result) > 0) {  //breaks result into different rows for each one.
                 while ($rows = mysqli_fetch_assoc($result)) {
-                    echo "Bug:" . $rows["title"] . " Posted: " . $rows["bugposted"] . "<br>";
+                    echo "User's ID:" . $rows["user_ID"] . " Name: " . $rows["name"] . "<br>";
                 }
             } else {
                 echo "no results found";
