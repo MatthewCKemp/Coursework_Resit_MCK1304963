@@ -1,12 +1,10 @@
-
-/*
- * Created by PhpStorm.
- * User: Matthew
- * Date: 28/06/2016
- * Time: 03:01
- */
-
 <!doctype html>
+
+//* Created by PhpStorm.
+//* User: Matthew
+//* Date: 28/06/2016
+//* Time: 03:01
+
 <html lang=en">
     <head>
         <meta charset="UTF-8">
@@ -25,11 +23,11 @@
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-            //echo "Connected successfully";
+            echo "Connected successfully";
             if (!$select) {
                 die(" Selection failed: " . mysqli_connect_error());
             }
-            //echo " DB Selected successfully";
+            echo " DB Selected successfully";
             mysqli_close($conn);
             ?>
         </body>
