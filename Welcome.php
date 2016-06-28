@@ -17,11 +17,11 @@
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-            echo "Connected successfully";
+            //echo "Connected successfully";
             if (!$select) {
                 die(" Selection failed: " . mysqli_connect_error());
             }
-            echo " DB Selected successfully";
+            //echo " DB Selected successfully";
 
             //SQL query
             $query = "SELECT bug_ID, title, bugposted FROM Bugs ORDER BY bug_ID DESC";
@@ -29,7 +29,7 @@
             
             if (mysqli_num_rows($result) > 0) {  //breaks result into different rows for each one.
                 while ($rows = mysqli_fetch_assoc($result)) {
-                    echo "Bug:" . $rows["title"] . " Posted: " . $rows["bugposted"] . "<br>";
+                    echo "Bug: " . $rows["title"] . " Posted: " . $rows["bugposted"] . "<br>";
                 }
             } else {
                 echo "no results found";
