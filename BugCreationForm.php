@@ -22,7 +22,7 @@
                 die(" Selection failed: " . mysqli_connect_error());
             }
             //echo " DB Selected successfully";
-            mysqli_close($conn);
+            
             ?>
 
             <form action="BugCreationForm.php" method="post">
@@ -32,9 +32,24 @@
                 <input type="submit">
             </form>
 
-            <?php echo $_POST["B_title"]; ?><br>
-            <?php echo $_POST["B_Desc"]; ?><br>
-            <?php echo $_POST["B_Author"]; ?><br>
-            <?php echo date("d-m-Y");?>
+            <?php echo "Title " . $_POST["B_title"]; ?><br>
+            <?php echo "Description " .$_POST["B_Desc"]; ?><br>
+            <?php echo "Author " . $_POST["B_Author"]; ?><br>
+            <?php echo "Date " . date("d-m-Y");
+
+            $BugTitle = mysqli_real_escape_string($conn, $_POST["B_Title"]);
+            $BugDesc = mysqli_real_escape_string($conn, $_POST["B_Desc"]);
+            $BugAuthor = mysqli_real_escape_string($conn, $_POST["B_Author"]);
+            $BugDate = mysqli_real_escape_string($conn, date ("d-m-Y)"));
+
+            $Insert = "INSERT INTO Bugs (title, description, dateposted)
+                VALUES ($BugTitle, $BugDesc , $BugDate)";
+                if(mysqli_query($conn, $Insert)){
+                    echo "Data successfully inserted.";
+                } else {
+                    echo "ERROR: Unable to insert data";
+                }
+            mysqli_close($conn);
+            ?>
         </body>
 </html>
