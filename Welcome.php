@@ -24,12 +24,12 @@
            // echo " DB Selected successfully";
 
             //SQL query
-            $query = "SELECT title, bugposted, satus FROM Bugs ORDER BY user_ID DESC";
+            $query = "SELECT title, bugposted, FROM Bugs ORDER BY user_ID DESC";
             $result = mysqli_query($conn, $query);
             
             if (mysqli_num_rows($result) > 0) {  //breaks result into different rows for each one.
                 while ($rows = mysqli_fetch_assoc($result)) {
-                    echo "User's ID:" . $rows["user_ID"] . " Name: " . $rows["name"] . "<br>";
+                    echo "Bug:" . $rows["title"] . " Posted: " . $rows["bugposted"] . "<br>";
                 }
             } else {
                 echo "no results found";
