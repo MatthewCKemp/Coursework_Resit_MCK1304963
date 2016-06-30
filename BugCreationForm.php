@@ -35,12 +35,12 @@
             <?php echo "Title " . $_POST["B_title"]; ?><br>
             <?php echo "Description " .$_POST["B_Desc"]; ?><br>
             <?php echo "Author " . $_POST["B_Author"]; ?><br>
-            <?php echo "Date " . ("Y-m-d");
+            <?php echo "Date " . Date ("Y-m-d");
 
             $BugTitle = mysqli_real_escape_string($conn, $_POST["B_Title"]);
             $BugDesc = mysqli_real_escape_string($conn, $_POST["B_Desc"]);
             $BugAuthor = mysqli_real_escape_string($conn, $_POST["B_Author"]);
-            $BugDate = mysqli_real_escape_string($conn, ("d-m-Y)"));
+            $BugDate = mysqli_real_escape_string($conn, Date ("Y-m-d)"));
 
             $Insert = "INSERT INTO Bugs (title, description, bugposted) VALUES ('$BugTitle', '$BugDesc', '$BugDate')";
                 if(mysqli_query($conn, $Insert)){
