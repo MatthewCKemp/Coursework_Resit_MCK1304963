@@ -23,9 +23,12 @@
             }
             //echo " DB Selected successfully";
         ?>
-        
-        
-        
+
+            <form action="Login.php" method="post">
+                Username: <input type="text" name="username"><br>
+                Password (50char max): <input type="number" name="password"><br>
+            </form>
+            
             <?php echo "Username: " . $_POST["username"]; ?><br>
             <?php echo "Password: " . $_POST["password"]; ?><br>
         
