@@ -32,10 +32,10 @@
                 <input type="submit" value ="Submit">
             </form>
 
-            <?php echo "Title " . $_POST["B_title"]; ?><br>
-            <?php echo "Description " .$_POST["B_Desc"]; ?><br>
-            <?php echo "Author " . $_POST["B_Author"]; ?><br>
-            <?php echo "Date " . Date ("Y-m-d");
+            <?php echo "Title: " . $_POST["B_title"]; ?><br>
+            <?php echo "Description: " .$_POST["B_Desc"]; ?><br>
+            <?php echo "Author: " . $_POST["B_Author"]; ?><br>
+            <?php echo "Date: " . Date ("Y-m-d");
 
             $BugTitle = mysqli_real_escape_string($conn, $_POST["B_title"]);
             $BugDesc = mysqli_real_escape_string($conn, $_POST["B_Desc"]);
