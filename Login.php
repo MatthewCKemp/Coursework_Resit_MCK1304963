@@ -8,7 +8,8 @@
 
         <form action="Login.php" method="post">
             Username: <input type="text" name="username"><br>
-            Password (50char max): <input type="number" name="password"><br>
+            Password: <input type="number" name="password"><br>
+            <input type="submit" value ="Submit">
         </form>
     
         <?php
@@ -28,34 +29,28 @@
                 die(" Selection failed: " . mysqli_connect_error());
             }
             //echo " DB Selected successfully";
-        ?>
             
-            <?php echo "Username: " . $_POST["username"]; ?><br>
-            <?php echo "Password: " . $_POST["password"]; ?><br>
-        
-        <?php
-            
-            if($_SERVER["REQUEST_METHOD"] == "POST") {
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
                 
-                $name = mysqli_real_escape_string($conn,$_POST['username']);
-                $ID = mysqli_real_escape_string($conn,$_POST['password']);
+            $name = mysqli_real_escape_string($conn,$_POST['username']);
+            $ID = mysqli_real_escape_string($conn,$_POST['password']);
 
-                $Select = "SELECT user_ID FROM Users WHERE name = '$name' and user_ID = '$ID'";
-                $result = mysqli_query($conn,$sql);
-                $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-                $active = $row['active'];
+            $Select = "SELECT user_ID FROM Users WHERE name = '$name' and user_ID = '$ID'";
+            $result = mysqli_query($conn,$sql);
+            $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+            $active = $row['active'];
 
-                $count = mysqli_num_rows($result);
+            $count = mysqli_num_rows($result);
 
-                if($count == 1) {
-                    session_register("username");
-                    $_SESSION['login_user'] = $name;
+            if($count == 1) {
+                session_register("username");
+                $_SESSION['login_user'] = $name;
     
-                    header("location: Welcome.php");
-                }else {
-                    $error = "Incorrect login";
-                }
-             }
+                header("location: Welcome.php");
+            }else {
+                $error = "Incorrect login";
+            }
+        }
         mysqli_close($conn);
         ?>
     </body>
