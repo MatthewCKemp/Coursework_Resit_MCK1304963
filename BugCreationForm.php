@@ -37,16 +37,16 @@
             <?php echo "Author " . $_POST["B_Author"]; ?><br>
             <?php echo "Date " . Date ("Y-m-d");
 
-            $BugTitle = mysqli_real_escape_string($conn, $_POST["B_Title"]);
+            $BugTitle = mysqli_real_escape_string($conn, $_POST["B_title"]);
             $BugDesc = mysqli_real_escape_string($conn, $_POST["B_Desc"]);
             $BugAuthor = mysqli_real_escape_string($conn, $_POST["B_Author"]);
             $BugDate = mysqli_real_escape_string($conn, Date ("Y-m-d)"));
 
             $Insert = "INSERT INTO Bugs (title, description, bugposted) VALUES ('$BugTitle', '$BugDesc', '$BugDate')";
                 if(mysqli_query($conn, $Insert)){
-                    echo "Data successfully inserted.";
+                    echo " Data successfully inserted.";
                 } else {
-                    echo "ERROR: Unable to insert data" . mysqli_error($conn);
+                    echo " ERROR: Unable to insert data" . mysqli_error($conn);
                 }
             mysqli_close($conn);
             ?>
