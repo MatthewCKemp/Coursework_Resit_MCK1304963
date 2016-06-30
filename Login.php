@@ -22,28 +22,36 @@
                 die(" Selection failed: " . mysqli_connect_error());
             }
             //echo " DB Selected successfully";
+        ?>
+        
+        
+        
+            <?php echo "Username: " . $_POST["username"]; ?><br>
+            <?php echo "Password: " . $_POST["password"]; ?><br>
+        
+        <?php
+            
+            if($_SERVER["REQUEST_METHOD"] == "POST") {
+                
+                $name = mysqli_real_escape_string($conn,$_POST['username']);
+                $ID = mysqli_real_escape_string($conn,$_POST['password']);
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
+                $Select = "SELECT user_ID FROM user WHERE name = '$name' and user_ID = '$ID'";
+                $result = mysqli_query($conn,$sql);
+                $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+                $active = $row['active'];
 
-            $name = mysqli_real_escape_string($conn,$_POST['username']);
-            $ID = mysqli_real_escape_string($conn,$_POST['password']);
+                $count = mysqli_num_rows($result);
 
-            $Select = "SELECT user_ID FROM user WHERE name = '$name' and user_ID = '$ID'";
-            $result = mysqli_query($conn,$sql);
-            $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-            $active = $row['active'];
-
-            $count = mysqli_num_rows($result);
-
-            if($count == 1) {
-                session_register("myusername");
-                $_SESSION['login_user'] = $name;
-
-                header("location: Welcome.php");
-            }else {
-                $error = "Incorrect login";
-            }
-        }
+                if($count == 1) {
+                    session_register("username");
+                    $_SESSION['login_user'] = $name;
+    
+                    header("location: Welcome.php");
+                }else {
+                    $error = "Incorrect login";
+                }
+             }
         mysqli_close($conn);
         ?>
     </body>
