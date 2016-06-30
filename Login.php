@@ -35,8 +35,8 @@
             $name = mysqli_real_escape_string($conn,$_POST['username']);
             $ID = mysqli_real_escape_string($conn,$_POST['password']);
 
-            $Select = "SELECT user_ID FROM Users WHERE name = '$name' and user_ID = '$ID'";
-            $result = mysqli_query($conn,$sql);
+            $Search = "SELECT user_ID FROM Users WHERE name = '$name' and user_ID = '$ID'";
+            $result = mysqli_query($conn,$search);
             $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
             $active = $row['active'];
 
