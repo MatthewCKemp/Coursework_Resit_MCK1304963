@@ -43,7 +43,6 @@
             $count = mysqli_num_rows($result);
 
             if($count == 1) {
-                session_register("username");
                 $_SESSION['login_user'] = $name;
     
                 header("location: Welcome.php");
