@@ -8,8 +8,8 @@
 
         <form action="Login.php" method="post">
             Username: <input type="text" name="username"><br>
-            Password: <input type="number" name="password"><br>
-            <input type="submit" value ="Submit">
+            Password: <input type="password" name="password"><br>
+            <input type="submit" value ="Submit "/><br/>
         </form>
     
         <?php
@@ -35,7 +35,7 @@
             $name = mysqli_real_escape_string($conn,$_POST['username']);
             $ID = mysqli_real_escape_string($conn,$_POST['password']);
 
-            $Search = "SELECT user_ID FROM Users WHERE name = '$name' and user_ID = '$ID'";
+            $Search = "SELECT user_ID FROM Users WHERE name = '$name' AND user_ID = '$ID'";
             $result = mysqli_query($conn,$search);
             $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
             $active = $row['active'];
