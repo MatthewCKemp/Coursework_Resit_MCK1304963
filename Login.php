@@ -5,6 +5,12 @@
         <title>BugSplat Login</title>
     </head>
     <body>
+
+        <form action="Login.php" method="post">
+            Username: <input type="text" name="username"><br>
+            Password (50char max): <input type="number" name="password"><br>
+        </form>
+    
         <?php
         $username = "b56f549a76a983";
         $password = "a3035583";
@@ -23,11 +29,6 @@
             }
             //echo " DB Selected successfully";
         ?>
-
-            <form action="Login.php" method="post">
-                Username: <input type="text" name="username"><br>
-                Password (50char max): <input type="number" name="password"><br>
-            </form>
             
             <?php echo "Username: " . $_POST["username"]; ?><br>
             <?php echo "Password: " . $_POST["password"]; ?><br>
@@ -39,7 +40,7 @@
                 $name = mysqli_real_escape_string($conn,$_POST['username']);
                 $ID = mysqli_real_escape_string($conn,$_POST['password']);
 
-                $Select = "SELECT user_ID FROM user WHERE name = '$name' and user_ID = '$ID'";
+                $Select = "SELECT user_ID FROM Users WHERE name = '$name' and user_ID = '$ID'";
                 $result = mysqli_query($conn,$sql);
                 $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
                 $active = $row['active'];
