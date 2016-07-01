@@ -35,7 +35,7 @@
             $name = mysqli_real_escape_string($conn,$_POST['username']);
             $Pass = mysqli_real_escape_string($conn,$_POST['password']);
 
-            $Search = "SELECT user_ID FROM Users WHERE name = '$name' AND country = '$Pass'";
+            $Search = "SELECT * FROM Users WHERE name = '$name' AND country = '$Pass'";
             $result = mysqli_query($conn,$search);
             $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
             $active = $row['active'];
@@ -44,6 +44,7 @@
 
             if($count == 1) {
                 $_SESSION['login_user'] = $name;
+                $_SESSION['login_user'] = $Pass;
                 echo "correct login";
                 header("location: Welcome.php");
             }else {
