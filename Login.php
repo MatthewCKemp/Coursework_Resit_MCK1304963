@@ -24,13 +24,13 @@
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-            //echo "Connected successfully";
+            echo "Connected successfully";
             if (!$select) {
                 die(" Selection failed: " . mysqli_connect_error());
             }
-            //echo " DB Selected successfully";
+            echo " DB Selected successfully";
             
-        if("POST") {
+        if("POST") { //More secure than GET
                 
             $name = mysqli_real_escape_string($conn,$_POST['username']);
             $Pass = mysqli_real_escape_string($conn,$_POST['password']);
