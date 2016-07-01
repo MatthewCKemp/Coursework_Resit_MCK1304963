@@ -44,7 +44,7 @@
 
             if($count == 1) {
                 $_SESSION['login_user'] = $name;
-    
+                echo "correct login";
                 header("location: Welcome.php");
             }else {
                 $error = "Incorrect login";
