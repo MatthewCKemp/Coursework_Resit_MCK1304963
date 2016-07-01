@@ -40,7 +40,13 @@ $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
 
             $GetPword = "SELECT user_ID FROM Users WHERE name = $UserName";
             $Password = mysqli_query($conn, $GetPword);
-            echo "Your password is: " . $Password;
+
+            if (mysqli_num_rows($Password) > 0) {  //breaks result into different rows for each one.
+                while ($rows = mysqli_fetch_assoc($Password)) {
+                    echo "Bug: " . $rows["title"] . " Posted: " . $rows["bugposted"] . "<br>";
+                }
+            
+                echo "Your password is: " . $Password;
             
         } else {
             echo " ERROR: Unable to create account" . mysqli_error($conn);
