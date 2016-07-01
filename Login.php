@@ -30,7 +30,7 @@
             }
             //echo " DB Selected successfully";
             
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
+        if("POST") {
                 
             $name = mysqli_real_escape_string($conn,$_POST['username']);
             $ID = mysqli_real_escape_string($conn,$_POST['password']);
@@ -48,6 +48,7 @@
                 header("location: Welcome.php");
             }else {
                 $error = "Incorrect login";
+                echo "incorrect login";
             }
         }
         mysqli_close($conn);
