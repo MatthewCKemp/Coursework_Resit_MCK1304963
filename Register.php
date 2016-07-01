@@ -37,16 +37,7 @@ $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
     $UserInsert = "INSERT INTO Users (name, country) VALUES ('$UserName', '$UserCountry')";
         if(mysqli_query($conn, $UserInsert)){
             echo " Your account has been created successfully .";
-
-            $GetPword = "SELECT user_ID FROM Users WHERE name = $UserName";
-            $Password = mysqli_query($conn, $GetPword);
-
-            if (mysqli_num_rows($Password) > 0) {  //breaks result into different rows for each one.
-                while ($rows = mysqli_fetch_assoc($Password)) {
-                    echo "Bug: " . $rows["title"] . " Posted: " . $rows["bugposted"] . "<br>";
-                }
-            }
-                echo "Your password is: " . $Password;
+            echo "Your password is: " . $UserCountry;
             
         } else {
             echo " ERROR: Unable to create account" . mysqli_error($conn);
