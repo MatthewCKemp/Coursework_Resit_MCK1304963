@@ -38,7 +38,7 @@ $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
         if(mysqli_query($conn, $UserInsert)){
             echo " Your account has been created successfully .";
 
-            $GetPword = "SELECT user_ID FROM Users WHERE name = U_name";
+            $GetPword = "SELECT user_ID FROM Users WHERE name = $Username";
             $Password = mysqli_query($conn, $GetPword);
             echo "Your password is: " . $Password;
             
