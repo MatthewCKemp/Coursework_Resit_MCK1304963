@@ -45,7 +45,7 @@ $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
                 while ($rows = mysqli_fetch_assoc($Password)) {
                     echo "Bug: " . $rows["title"] . " Posted: " . $rows["bugposted"] . "<br>";
                 }
-            
+            }
                 echo "Your password is: " . $Password;
             
         } else {
