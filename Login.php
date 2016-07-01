@@ -33,9 +33,9 @@
         if("POST") {
                 
             $name = mysqli_real_escape_string($conn,$_POST['username']);
-            $ID = mysqli_real_escape_string($conn,$_POST['password']);
+            $Pass = mysqli_real_escape_string($conn,$_POST['password']);
 
-            $Search = "SELECT user_ID FROM Users WHERE name = '$name' AND user_ID = '$ID'";
+            $Search = "SELECT user_ID FROM Users WHERE name = '$name' AND country = '$Pass'";
             $result = mysqli_query($conn,$search);
             $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
             $active = $row['active'];
@@ -48,7 +48,7 @@
                 header("location: Welcome.php");
             }else {
                 $error = "Incorrect login";
-                echo "incorrect login" . mysqli_error($conn);
+                echo $error . mysqli_error($conn);
             }
         }
         mysqli_close($conn);
