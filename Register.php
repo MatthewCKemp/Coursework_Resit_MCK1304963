@@ -30,24 +30,18 @@ $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
         die(" Selection failed: " . mysqli_connect_error());
     }
     //echo " DB Selected successfully";
-?>
-    <?php echo "Title: " . $_POST["B_title"]; ?><br>
-    <?php echo "Description: " .$_POST["B_Desc"]; ?><br>
-<?php   
+
     $UserName = mysqli_real_escape_string($conn, $_POST["U_name"]);
     $UserCountry = mysqli_real_escape_string($conn, $_POST["U_country"]);
 
     $UserInsert = "INSERT INTO Users (name, country) VALUES ('$UserName', '$UserCountry')";
         if(mysqli_query($conn, $UserInsert)){
             echo " Your account has been created successfully .";
-        
-        
-        
-        
-        
-        
-        
-        
+
+            $GetPword = "SELECT user_ID FROM Users WHERE name = U_name";
+            $Password = mysqli_query($conn, $GetPword);
+            echo "Your password is: " . $Password;
+            
         } else {
             echo " ERROR: Unable to create account" . mysqli_error($conn);
         }
