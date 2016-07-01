@@ -48,7 +48,7 @@
                 header("location: Welcome.php");
             }else {
                 $error = "Incorrect login";
-                echo "incorrect login";
+                echo "incorrect login" . mysqli_error($conn);
             }
         }
         mysqli_close($conn);
