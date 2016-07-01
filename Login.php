@@ -24,11 +24,11 @@
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-            echo "Connected successfully";
+            //echo "Connected successfully";
             if (!$select) {
                 die(" Selection failed: " . mysqli_connect_error());
             }
-            echo " DB Selected successfully";
+            //echo " DB Selected successfully";
             
         if("POST") { //More secure than GET
                 
@@ -43,10 +43,12 @@
             $count = mysqli_num_rows($result);
 
             if($count == 1) {
-                $_SESSION['login_user'] = $name;
-                $_SESSION['login_user'] = $Pass;
+                $_SESSION['login_username'] = 'username';
+                $_SESSION['login_password'] = 'password';
+                
                 echo "correct login";
                 header("location: Welcome.php");
+            
             }else {
                 $error = "Incorrect login";
                 echo $error . mysqli_error($conn);
