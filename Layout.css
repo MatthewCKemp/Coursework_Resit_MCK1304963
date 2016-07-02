@@ -10,4 +10,4 @@ div#footer p{margin:0; padding:5px 10px}
 div#comments{ text-align:left; top:800px; left:25px; right:175px; height:400px; position:absolute; background:#CCC8B3}
 div#navigation{text-align:left; position:absolute; right:25px; top:130px; width:150px; height:500px; background:#ffff66}
 div#navigation p{margin:0; padding:5px 10px}
-div#content{text-align:left; position:absolute; top:180px; left:25px; right:175px;}
+div#content{text-align:left; position:absolute; top:180px; left:25px; right:175px; color:#0000cc}
