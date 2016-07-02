@@ -6,8 +6,8 @@
         <link rel="stylesheet" type ="text/css" href="layout.css" />
     </head>
     <body>
+    <div id ="header">Login</div>
         <div id="login">
-            <div id ="header">Login</div>
             <form action="Login.php" method="post">
                 Username: <input type="text" name="username"><br>
                 Password: <input type="password" name="password"><br>
