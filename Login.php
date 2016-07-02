@@ -17,7 +17,10 @@
     <div id="navigation">
             <p><strong>Links</strong></p>
     </div>
-    <div id="extra">
+    <div id="content">
+        <p><strong>Main writing</strong></p>
+    </div>
+    <div id="comments">
         <p><strong>Comments</strong></p>
     </div>
     <div id="footer">
