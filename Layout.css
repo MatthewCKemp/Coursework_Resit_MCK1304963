@@ -3,10 +3,10 @@ body{font: 80% arial,sans-serif;text-align:center; width:1920px; height:1080px;}
 p{margin:0 10px 10px}
 a{padding:5px; text-decoration:none; color:#F3F2ED}
 div#container{text-align:left; margin:0 auto}
-div#header{text-align:left; position:absolute; top:10px; left:20px; height:100px; width:1920px; line-height:100px; margin:0; padding-left:10px; background-color:#F3F2ED; font-size:48px}
+div#header{text-align:left; position:absolute; top:10px; left:25px; right:25px; height:100px; width:1920px; line-height:100px; margin:0; padding-left:10px; background-color:#F3F2ED; font-size:48px}
 div#login{text-align:left; font-size:16px; background-color:#F3F2ED}
-div#login{position:absolute; top:10px; right:20px; width:150px; height:100px}
-div#footer{text-align:left; position:absolute; bottom:0; width:1920px; height:100px; background:#BFBD93}
+div#login{position:absolute; top:10px; left:25px; right:25px; width:150px; height:100px}
+div#footer{text-align:left; position:absolute; bottom:0; height:100px; background:#BFBD93}
 div#footer p{margin:0; padding:5px 10px}
-div#extra{text-align:left; top:400px; position:absolute; clear:both; width:100%; background:#CCC8B3}
-div#navigation{text-align:left; position:absolute; left:20px; top:100px; width:200px; height:300px; background:#CCC8B3}
+div#extra{text-align:left; top:400px; left:25px; right:25px; position:absolute; clear:both; width:100%; background:#CCC8B3}
+div#navigation{text-align:left; position:absolute; left:25px; top:100px; width:200px; height:300px; background:#CCC8B3}
