@@ -1,10 +1,12 @@
 html,body{margin:0;padding:0}
-body{font: 76% arial,sans-serif;text-align:center; width:1920px; height:1080px;}
+body{font: 80% arial,sans-serif;text-align:center; width:1920px; height:1080px;}
 p{margin:0 10px 10px}
 a{padding:5px; text-decoration:none; color:#F3F2ED;}
-div#container{text-align:left}
-div#container{margin:0 auto}
-div#header{background-color:#F3F2ED; font-size:48px;}
-div#header{height:80px; line-height:80px; margin:0; padding-left:10px;}
-div#login{text-align:left; font-size:16px; }
+div#container{text-align:left; margin:0 auto}
+div#header{position:absolute; height:80px; line-height:80px; margin:0; padding-left:10px; background-color:#F3F2ED; font-size:48px}
+div#login{text-align:left; font-size:16px; background-color:#F3F2ED; }
 div#login{position:absolute; top:10px; right:20px; width:660px; height:330px;}
+div#footer{background:#BFBD93;}
+div#footer p{margin:0;padding:5px 10px}
+div#extra{clear:both;width:100%; background:#CCC8B3;}
+div#navigation{float:right;width:200px; }
