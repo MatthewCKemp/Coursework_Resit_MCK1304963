@@ -3,15 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <title>BugSplat Login</title>
+        <link rel="stylesheet" type ="text/css" href="layout.css" />
     </head>
     <body>
-
-        <form action="Login.php" method="post">
-            Username: <input type="text" name="username"><br>
-            Password: <input type="password" name="password"><br>
-            <input type="submit" value ="Submit "/><br/>
-        </form>
-    
+        <div id="container">
+            <form action="Login.php" method="post">
+                Username: <input type="text" name="username"><br>
+                Password: <input type="password" name="password"><br>
+                <input type="submit" value ="Submit "/><br/>
+            </form>
+        </div>
         <?php
         $username = "b56f549a76a983";
         $password = "a3035583";
@@ -43,9 +44,7 @@
             $count = mysqli_num_rows($result);
 
             if($count == 1) {
-                $_SESSION['login_username'] = 'username';
-                $_SESSION['login_password'] = 'password';
-                
+                $_SESSION['login_user'] = 'username';
                 echo "correct login";
                 header("location: Welcome.php");
             
