@@ -7,4 +7,4 @@ div#container{margin:0 auto}
 div#header{background-color:#F3F2ED; font-size:48px;}
 div#header{height:80px; line-height:80px; margin:0; padding-left:10px;}
 div#login{text-align:left; font-size:16px; }
-div#login{position:absolute; top:10px; right:20px;}
+div#login{position:absolute; top:10px; right:20px; width:660px; height:330px;}
