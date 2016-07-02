@@ -7,13 +7,22 @@
     </head>
     <body>
     <div id ="header">Login</div>
-        <div id="login">
-            <form action="Login.php" method="post">
-                Username: <input type="text" name="username"><br>
-                Password: <input type="password" name="password"><br>
-                <input type="submit" value ="Submit "/><br/>
-            </form>
-        </div>
+    <div id="login">
+        <form action="Login.php" method="post">
+            Username: <input type="text" name="username"><br>
+            Password: <input type="password" name="password"><br>
+            <input type="submit" value ="Submit "/><br/>
+        </form>
+    </div>
+    <div id="navigation">
+            <p><strong>Links</strong></p>
+    </div>
+    <div id="extra">
+        <p><strong>Comments</strong></p>
+    </div>
+    <div id="footer">
+        <p><strong>Legal shit</strong></p>
+    </div>
         <?php
         $username = "b56f549a76a983";
         $password = "a3035583";
@@ -50,7 +59,7 @@
                 header("location: Welcome.php");
             
             }else {
-                $error = "Incorrect login";
+                $error = "<Incorrect login";
                 echo $error . mysqli_error($conn);
             }
         }
