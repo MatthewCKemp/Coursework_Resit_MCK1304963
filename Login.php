@@ -6,7 +6,7 @@
         <link rel="stylesheet" type ="text/css" href="layout.css" />
     </head>
     <body>
-        <div id="container">
+        <div id="login">
             <div id ="header">Login</div>
             <form action="Login.php" method="post">
                 Username: <input type="text" name="username"><br>
