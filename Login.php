@@ -7,6 +7,7 @@
     </head>
     <body>
         <div id="container">
+            <div id ="header">Login</div>
             <form action="Login.php" method="post">
                 Username: <input type="text" name="username"><br>
                 Password: <input type="password" name="password"><br>
