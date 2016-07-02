@@ -1,8 +1,8 @@
 html,body{margin:0;padding:0}
-body{font: 76% arial,sans-serif;text-align:center}
+body{font: 76% arial,sans-serif;text-align:center;width:100%;height:100%;}
 p{margin:0 10px 10px}
 a{padding:5px; text-decoration:none; color:#000000;}
 div#container{text-align:left}
 div#container{width:700px;margin:0 auto}
 div#header{background-color:#F3F2ED;}
-div#header h1{height:80px;line-height:80px;margin:0;padding-left:10px;}
+div#header{height:80px;line-height:80px;margin:0;padding-left:10px;}
