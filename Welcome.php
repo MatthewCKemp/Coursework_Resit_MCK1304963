@@ -49,9 +49,6 @@
                     ?>
                 </div>
             </div>
-            <div id="comments">
-                <p><strong>Comments</strong></p>
-            </div>
             <div id="footer">
                 <p><strong>Legal shit</strong></p>
             </div>
