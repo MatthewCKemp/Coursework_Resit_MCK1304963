@@ -7,14 +7,14 @@
     </head>
     <body>
         <div id ="header">Register</div>    
-            <div id="Login">
-                <form action="Register.php" method="post">
-                    Please fill in the following details to create your account:<br>
-                    Name (This will become your username): <input type="text" name="U_name"><br>
-                    Home Country: <input type="text" name="U_country"><br>
-                    <input type="submit" value ="Submit "/><br/>
-                </form>
-            </div>
+        <div id="login">
+            <form action="Register.php" method="post">
+                Please fill in the following details to create your account:<br>
+                Name (This will become your username): <input type="text" name="U_name"><br>
+                Home Country: <input type="text" name="U_country"><br>
+                <input type="submit" value ="Register"/><br/>
+            </form>
+        </div>
         <div id="navigation">
             <p><strong>Links</strong></p>
         </div>
