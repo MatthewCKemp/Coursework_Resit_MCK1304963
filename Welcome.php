@@ -41,7 +41,7 @@
 
                         if (mysqli_num_rows($result) > 0) {  //breaks result into different rows for each one.
                             while ($rows = mysqli_fetch_assoc($result)) {
-                                echo "Bug: " . $rows["title"] . " Posted: " . $rows["bugposted"] . "<br>";
+                                echo "<tr><td>" . "Bug: " . $rows["title"] . " Posted: " . $rows["bugposted"] . "</tr></td>";
                             }
                         } else {
                             echo "no results found";
