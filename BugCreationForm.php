@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>BugSplat: Create a New Bug</title>
+        <link rel="stylesheet" type ="text/css" href="layout.css" />
     </head>
         <body>
             <div id ="header">Create new Bug</div>
