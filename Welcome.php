@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Welcome to Bugsplat</title>
+        <link rel="stylesheet" type ="text/css" href="layout.css" />
     </head>
         <body>
             <div id ="header">Welcome</div>
