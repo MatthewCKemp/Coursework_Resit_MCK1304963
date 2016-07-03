@@ -5,6 +5,20 @@
         <title>Welcome to Bugsplat</title>
     </head>
         <body>
+            <div id ="header">Welcome</div>
+            <div id="navigation">
+                <p><strong>Links</strong></p>
+            </div>
+            <div id="content">
+                <p><strong>Main writing</strong></p>
+            </div>
+            <div id="comments">
+                <p><strong>Comments</strong></p>
+            </div>
+            <div id="footer">
+                <p><strong>Legal shit</strong></p>
+            </div>
+        
             <?php
             $username = "b56f549a76a983";
             $password = "a3035583";
