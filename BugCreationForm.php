@@ -12,6 +12,14 @@
             </div>
             <div id="content">
                 <p><strong>Main writing</strong></p>
+                <div id="container">
+                    <form action="BugCreationForm.php" method="post">
+                        Title of Bug: <input type="text" name="B_title"><br>
+                        Description (50char max): <input type="text" name="B_Desc"><br>
+                        Author name: <input type="text" name="B_Author"><br>
+                        <input type="submit" value ="Submit">
+                    </form>
+                </div>
             </div>
             <div id="comments">
                 <p><strong>Comments</strong></p>
@@ -39,14 +47,7 @@
             //echo " DB Selected successfully";
             
             ?>
-            <div id="container">
-                <form action="BugCreationForm.php" method="post">
-                    Title of Bug: <input type="text" name="B_title"><br>
-                    Description (50char max): <input type="text" name="B_Desc"><br>
-                    Author name: <input type="text" name="B_Author"><br>
-                    <input type="submit" value ="Submit">
-                </form>
-            </div>
+            
             <?php echo "Title: " . $_POST["B_title"]; ?><br>
             <?php echo "Description: " .$_POST["B_Desc"]; ?><br>
             <?php echo "Author: " . $_POST["B_Author"]; ?><br>
