@@ -1,7 +1,7 @@
 html,body{margin:0;padding:0}
 body{font: 80% arial,sans-serif;text-align:center; width:100%; height:250%}
 p{margin:0 10px 10px}
-a{padding:5px; text-decoration:none; color:#F3F2ED}
+a{padding:5px; text-decoration:none; color: #70cdf3}
 div#container{text-align:left; margin:0 auto; background: #ffffff; position:absolute;  top:25px; left:25px; right:25px; bottom:25px }
 div#header{text-align:left; position:absolute; top:10px; left:25px; right:25px; height:120px; line-height:100px; margin:0; padding-left:10px; background-color:#F3F2ED; font-size:48px}
 div#login{text-align:left; font-size:12px; background-color:#F3F2ED; position:absolute; top:12px; right:25px; width:150px; height:100px}
@@ -11,3 +11,5 @@ div#comments{ text-align:left; top:890px; left:25px; right:175px; height:310px; 
 div#navigation{text-align:left; position:absolute; right:25px; top:130px; width:150px; height:500px; background: #ffffcf}
 div#navigation p{margin:0; padding:5px 10px}
 div#content{text-align:left; position:absolute; top:160px; left:25px; right:175px; height:700px; background: #F3F2ED}
+table th td{border-bottom: 1px solid #ddd;}
+tr:hover {background-color: #F3F2ED}
