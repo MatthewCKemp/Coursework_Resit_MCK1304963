@@ -39,16 +39,18 @@
                         $query = "SELECT bug_ID, title, bugposted FROM Bugs ORDER BY bug_ID DESC";
                         $result = mysqli_query($conn, $query);
 
-                        if (mysqli_num_rows($result) > 0) {  //breaks result into different rows for each one.
-                            while ($rows = mysqli_fetch_assoc($result)) {
-                                echo "<tr><td>" . "Bug: " . $rows["title"] . " Posted: " . $rows["bugposted"] . "</tr></td>";
+                        if (mysqli_num_rows($result) > 0) {
+                            echo "<table><tr><th>Bug Name</th><th>Date Posted</th></tr>";
+                            while ($rows = mysqli_fetch_assoc($result)) { //Outputs data in each row.
+                                echo "<tr><td>" . $rows["title"] . $rows["bugposted"] . "</tr></td>";
                             }
+                            echo"</table>";
                         } else {
                             echo "no results found";
                         }
                         mysqli_close($conn);
                         ?>
-                    </table>
+                    
                 </div>
             </div>
             <div id="footer">
