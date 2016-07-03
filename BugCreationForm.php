@@ -5,6 +5,20 @@
         <title>BugSplat: Create a New Bug</title>
     </head>
         <body>
+            <div id ="header">Create new Bug</div>
+            <div id="navigation">
+                <p><strong>Links</strong></p>
+            </div>
+            <div id="content">
+                <p><strong>Main writing</strong></p>
+            </div>
+            <div id="comments">
+                <p><strong>Comments</strong></p>
+            </div>
+            <div id="footer">
+                <p><strong>Legal shit</strong></p>
+            </div>
+            
             <?php
             $username = "b56f549a76a983";
             $password = "a3035583";
@@ -24,14 +38,14 @@
             //echo " DB Selected successfully";
             
             ?>
-
-            <form action="BugCreationForm.php" method="post">
-                Title of Bug: <input type="text" name="B_title"><br>
-                Description (50char max): <input type="text" name="B_Desc"><br>
-                Author name: <input type="text" name="B_Author"><br>
-                <input type="submit" value ="Submit">
-            </form>
-
+            <div id="container">
+                <form action="BugCreationForm.php" method="post">
+                    Title of Bug: <input type="text" name="B_title"><br>
+                    Description (50char max): <input type="text" name="B_Desc"><br>
+                    Author name: <input type="text" name="B_Author"><br>
+                    <input type="submit" value ="Submit">
+                </form>
+            </div>
             <?php echo "Title: " . $_POST["B_title"]; ?><br>
             <?php echo "Description: " .$_POST["B_Desc"]; ?><br>
             <?php echo "Author: " . $_POST["B_Author"]; ?><br>
