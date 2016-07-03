@@ -6,19 +6,37 @@
         <link rel="stylesheet" type ="text/css" href="layout.css" />
     </head>
         <body>
-            <div id ="header">Create new Bug</div>
+            <div id ="header">Create A New Bug</div>
             <div id="navigation">
                 <p><strong>Links</strong></p>
             </div>
             <div id="content">
-                <p><strong>Main writing</strong></p>
                 <div id="container">
                     <form action="BugCreationForm.php" method="post">
                         Title of Bug: <input type="text" name="B_title"><br>
                         Description (50char max): <input type="text" name="B_Desc"><br>
                         Author name: <input type="text" name="B_Author"><br>
-                        <input type="submit" value ="Submit">
+                        <input type="submit" value ="Create">
                     </form>
+                    
+                    <?php echo "Title: " . $_POST["B_title"]; ?><br>
+                    <?php echo "Description: " .$_POST["B_Desc"]; ?><br>
+                    <?php echo "Author: " . $_POST["B_Author"]; ?><br>
+                    <?php echo "Date: " . Date ("Y-m-d");
+
+                    $BugTitle = mysqli_real_escape_string($conn, $_POST["B_title"]);
+                    $BugDesc = mysqli_real_escape_string($conn, $_POST["B_Desc"]);
+                    $BugAuthor = mysqli_real_escape_string($conn, $_POST["B_Author"]);
+                    $BugDate = mysqli_real_escape_string($conn, Date ("Y-m-d)"));
+
+                    $Insert = "INSERT INTO Bugs (title, description, bugposted) VALUES ('$BugTitle', '$BugDesc', '$BugDate')";
+                    if(mysqli_query($conn, $Insert)){
+                        echo " Data successfully inserted.";
+                    } else {
+                        echo " ERROR: Unable to insert data" . mysqli_error($conn);
+                    }
+                    mysqli_close($conn);
+                    ?>
                 </div>
             </div>
             <div id="comments">
@@ -46,25 +64,6 @@
             }
             //echo " DB Selected successfully";
             
-            ?>
-            
-            <?php echo "Title: " . $_POST["B_title"]; ?><br>
-            <?php echo "Description: " .$_POST["B_Desc"]; ?><br>
-            <?php echo "Author: " . $_POST["B_Author"]; ?><br>
-            <?php echo "Date: " . Date ("Y-m-d");
-
-            $BugTitle = mysqli_real_escape_string($conn, $_POST["B_title"]);
-            $BugDesc = mysqli_real_escape_string($conn, $_POST["B_Desc"]);
-            $BugAuthor = mysqli_real_escape_string($conn, $_POST["B_Author"]);
-            $BugDate = mysqli_real_escape_string($conn, Date ("Y-m-d)"));
-
-            $Insert = "INSERT INTO Bugs (title, description, bugposted) VALUES ('$BugTitle', '$BugDesc', '$BugDate')";
-                if(mysqli_query($conn, $Insert)){
-                    echo " Data successfully inserted.";
-                } else {
-                    echo " ERROR: Unable to insert data" . mysqli_error($conn);
-                }
-            mysqli_close($conn);
             ?>
         </body>
 </html>
