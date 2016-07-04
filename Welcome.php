@@ -8,8 +8,8 @@
         <body>
             <div id ="header">Welcome</div>
             <div id="navigation">
-                <p><strong>Links</strong></p>
                 <ul>
+                    <p><strong>Links</strong></p>
                     <li><a href="http://mck1304963cwresit.azurewebsites.net/Login.php">Login</a></li>
                     <li><a href="http://mck1304963cwresit.azurewebsites.net/Register.php">Create a new account</a></li>
                     <li><a href="http://mck1304963cwresit.azurewebsites.net/BugCreationForm.php">Create a new Bug</a></li>
