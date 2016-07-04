@@ -12,5 +12,5 @@ div#comments{ text-align:left; top:890px; left:25px; right:175px; height:310px; 
 div#navigation{text-align:left; position:absolute; right:25px; top:130px; width:150px; height:500px; background: #ffffcf}
 div#navigation p{margin:0; padding:5px 10px}
 div#content{text-align:left; position:absolute; top:160px; left:25px; right:175px; height:700px; background: #F3F2ED}
-table th td{border-bottom: 1px solid #ddd;}
+table th td{border-bottom: 1px solid #ddd; border-spacing:5px; width:100%;}
 tr:hover {background-color: #F3F2ED}
