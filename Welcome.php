@@ -46,10 +46,6 @@
                             echo "<table><tr><th>Bug Name</th><th>Date Posted</th></tr>";
                             while ($rows = mysqli_fetch_assoc($result)) { //Outputs data in each row.
                                 echo "<tr><td>" . $rows["title"] . "</td><td>" . $rows["bugposted"] . "</tr></td>";
-                                $i++;
-                                if ($i >=5){
-                                    break;
-                                }
                             }
                             echo"</table>";
                         } else {
