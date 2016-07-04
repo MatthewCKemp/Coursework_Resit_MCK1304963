@@ -9,10 +9,12 @@
             <div id ="header">Create A New Bug</div>
             <div id="navigation">
                 <p><strong>Links</strong></p>
-                <a href="http://mck1304963cwresit.azurewebsites.net/Welcome.php">Return to the welcome page</a>
-                <a href="http://mck1304963cwresit.azurewebsites.net/Login.php">Login</a>
-                <a href="http://mck1304963cwresit.azurewebsites.net/Register.php">Create a new account</a>
-                <a href="http://mck1304963cwresit.azurewebsites.net/Search.php">Search</a>
+                <ul>
+                    <li><a href="http://mck1304963cwresit.azurewebsites.net/Welcome.php">Return to the welcome page</a></li>
+                    <li><a href="http://mck1304963cwresit.azurewebsites.net/Login.php">Login</a></li>
+                    <li><a href="http://mck1304963cwresit.azurewebsites.net/Register.php">Create a new account</a></li>
+                    <li><a href="http://mck1304963cwresit.azurewebsites.net/Search.php">Search</a></li>
+                </ul>
             </div>
             <div id="content">
                 <div id="container">
