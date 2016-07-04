@@ -40,11 +40,16 @@
                         //SQL query
                         $query = "SELECT bug_ID, title, bugposted FROM Bugs ORDER BY bug_ID DESC";
                         $result = mysqli_query($conn, $query);
-
-                        if (mysqli_num_rows($result) > 0 and (mysqli_num_rows($result) <6)){
+                        $i=0;
+                        
+                        if (mysqli_num_rows($result) > 0 ){
                             echo "<table><tr><th>Bug Name</th><th>Date Posted</th></tr>";
                             while ($rows = mysqli_fetch_assoc($result)) { //Outputs data in each row.
                                 echo "<tr><td>" . $rows["title"] . "</td><td>" . $rows["bugposted"] . "</tr></td>";
+                                $i++;
+                                if ($i >=5){
+                                    break;
+                                }
                             }
                             echo"</table>";
                         } else {
