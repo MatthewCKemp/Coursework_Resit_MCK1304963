@@ -4,6 +4,27 @@
         <meta charset="UTF-8">
         <title>BugSplat: Create a New Bug</title>
         <link rel="stylesheet" type ="text/css" href="layout.css" />
+
+        <?php
+        $username = "b56f549a76a983";
+        $password = "a3035583";
+        $servername = "us-cdbr-azure-west-c.cloudapp.net";
+
+        // Create connection to DB
+        $conn = mysqli_connect($servername, $username, $password);
+        $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
+        // Check the connectionas
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        //echo "Connected successfully";
+        if (!$select) {
+            die(" Selection failed: " . mysqli_connect_error());
+        }
+        //echo " DB Selected successfully";
+
+        ?>
+        
     </head>
         <body>
             <div id ="header">Create A New Bug</div>
@@ -28,12 +49,12 @@
                     <?php echo "Title: " . $_POST["B_title"]; ?><br>
                     <?php echo "Description: " .$_POST["B_Desc"]; ?><br>
                     <?php echo "Author: " . $_POST["B_Author"]; ?><br>
-                    <?php echo "Date: " . Date ("Y-m-d");
+                    <?php echo "Date: " . date ("Y-m-d");
 
                     $BugTitle = mysqli_real_escape_string($conn, $_POST["B_title"]);
                     $BugDesc = mysqli_real_escape_string($conn, $_POST["B_Desc"]);
                     $BugAuthor = mysqli_real_escape_string($conn, $_POST["B_Author"]);
-                    $BugDate = mysqli_real_escape_string($conn, Date ("Y-m-d)"));
+                    $BugDate = mysqli_real_escape_string($conn, date ("Y-m-d)"));
 
                     $Insert = "INSERT INTO Bugs (title, description, bugposted) VALUES ('$BugTitle', '$BugDesc', '$BugDate')";
                     if(mysqli_query($conn, $Insert)){
@@ -52,25 +73,5 @@
             <div id="footer">
                 <p><strong>Legal shit</strong></p>
             </div>
-            
-            <?php
-            $username = "b56f549a76a983";
-            $password = "a3035583";
-            $servername = "us-cdbr-azure-west-c.cloudapp.net";
-
-            // Create connection to DB
-            $conn = mysqli_connect($servername, $username, $password);
-            $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
-            // Check the connectionas
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-            //echo "Connected successfully";
-            if (!$select) {
-                die(" Selection failed: " . mysqli_connect_error());
-            }
-            //echo " DB Selected successfully";
-            
-            ?>
         </body>
 </html>
