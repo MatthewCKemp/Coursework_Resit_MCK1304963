@@ -39,9 +39,9 @@
 
             $keywords = "SELECT key_description FROM Keywords";
 
-            echo "<option name=Keywords>Keyword</option>";
+            echo "<select name=Keywords>Keyword</select>";
             foreach ($conn->query($keywords) as $row){
-                echo "<option value=$row[key_description]></option>";
+                echo "<option value=$row[key_description]>$row[key_ID]</option>";
             }
 
             echo "</select>";
