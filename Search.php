@@ -39,36 +39,14 @@
 
             $keywords = "SELECT key_description FROM Keywords";
 
-            echo "<select name=Keywords value=''>Keyword</option>";
+            echo "<select name=Keywords>Keyword</option>";
             foreach ($conn->query($keywords) as $row){
                 echo "<option value=$row[key_description]></option>";
             }
 
             echo "</select>";
-
-
-
-
-
-
-            //SQL query
-            $input = $_post['userInput'];
-
-            $result = mysqli_query($conn, $keywords);
-
-
-            if (mysqli_num_rows($result) > 0 ){
-                echo "<table><tr><th>Bug Name</th><th>Date Posted</th></tr>";
-                while ($rows = mysqli_fetch_assoc($result)) { //Outputs data in each row.
-                    echo "<tr><td>" . $rows["title"] . "</td><td>" . $rows["bugposted"] . "</tr></td>";
-                }
-                echo"</table>";
-                }else {
-                echo "no results found";
-            }
             mysqli_close($conn);
             ?>
-
     </div>
 </div>
 <div id="footer">
