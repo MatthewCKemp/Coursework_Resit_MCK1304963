@@ -38,10 +38,17 @@
 
 
             $keywords = "SELECT key_description FROM Keywords";
+            $users = "SELECT name FROM Users";
 
-            echo "<select name=Keywords>Keyword";
+            echo "Keywords: <select name=Keywords>Keyword";
             foreach ($conn->query($keywords) as $row){
                 echo "<option value=$row[key_description]>$row[key_description]</option>";
+            }
+
+            echo "</select>";
+            echo "Developers: <select name=Developer>Developer";
+            foreach ($conn->query($users) as $row2){
+                echo "<option value=$row2[name]>$row2[name]</option>";
             }
 
             echo "</select>";
