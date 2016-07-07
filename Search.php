@@ -2,7 +2,7 @@
 <html lang=en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to Bugsplat</title>
+    <title>Search</title>
     <link rel="stylesheet" type ="text/css" href="layout.css" />
 </head>
 <body>
@@ -39,7 +39,7 @@
 
             $keywords = "SELECT key_description FROM Keywords";
 
-            echo "<select name=Keywords>Keyword</option>";
+            echo "<select name=Keywords>Keyword</select>";
             foreach ($conn->query($keywords) as $row){
                 echo "<option value=$row[key_description]></option>";
             }
