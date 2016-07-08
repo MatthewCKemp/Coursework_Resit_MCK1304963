@@ -4,27 +4,6 @@
         <meta charset="UTF-8">
         <title>BugSplat: Create a New Bug</title>
         <link rel="stylesheet" type ="text/css" href="layout.css" />
-
-        <?php
-        $username = "b56f549a76a983";
-        $password = "a3035583";
-        $servername = "us-cdbr-azure-west-c.cloudapp.net";
-
-        // Create connection to DB
-        $conn = mysqli_connect($servername, $username, $password);
-        $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
-        // Check the connectionas
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
-        //echo "Connected successfully";
-        if (!$select) {
-            die(" Selection failed: " . mysqli_connect_error());
-        }
-        //echo " DB Selected successfully";
-
-        ?>
-        
     </head>
         <body>
             <div id ="header">Create A New Bug</div>
@@ -40,8 +19,8 @@
             <div id="content">
                 <div id="container">
                     <form action="BugCreationForm.php" method="post">
-                        Title of Bug: <input type="text" name="B_title" SIZE="20"><br>
-                        Description (200char max): <input type="text" name="B_Desc" SIZE="200"><br>
+                        Title of Bug: <input type="text" name="B_title"><br>
+                        Description (200char max): <input type="text" name="B_Desc"><br>
                         Author name: <input type="text" name="B_Author"><br>
                         <input type="submit" value ="Create">
                     </form>
@@ -73,5 +52,25 @@
             <div id="footer">
                 <p><strong>Legal shit</strong></p>
             </div>
+            
+            <?php
+            $username = "b56f549a76a983";
+            $password = "a3035583";
+            $servername = "us-cdbr-azure-west-c.cloudapp.net";
+
+            // Create connection to DB
+            $conn = mysqli_connect($servername, $username, $password);
+            $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
+            // Check the connectionas
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            //echo "Connected successfully";
+            if (!$select) {
+                die(" Selection failed: " . mysqli_connect_error());
+            }
+            //echo " DB Selected successfully";
+            
+            ?>
         </body>
 </html>
