@@ -38,8 +38,8 @@
             <div id="content">
                 <div id="container">
                     <form action="Login.php" method="post">
-                        Username: <input type="text" name="username"><br>
-                        Password: <input type="password" name="password"><br>
+                        <label>Username: </label><input type="text" name="username"/><br><br/>
+                        <label>Password: </label><input type="password" name="password"/><br><br/>
                         <input type="submit" value ="Login"/><br/>
                     </form>
                     <?php
@@ -48,7 +48,7 @@
                             $name = mysqli_real_escape_string($conn, $_POST['username']);
                             $Pass = mysqli_real_escape_string($conn, $_POST['password']);
 
-                            $Search = "SELECT name, country FROM Users WHERE name = '$name' AND country = '$Pass'";
+                            $Search = "SELECT id FROM Users WHERE name = '$name' AND country = '$Pass'";
                             $result = mysqli_query($conn, $Search);
                             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             $active = $row['active'];
@@ -63,14 +63,15 @@
                                 echo "correct login";
                             } else {
                                 echo "Incorrect login, please retry";
+                                echo "s" . $search;
+                                echo $result;
+                                echo $row;
+                                echo $active;
+                                echo $name;
+                                echo $pass;
+                                echo $count;
                             }
-                            echo $search;
-                            echo $result;
-                            echo $row;
-                            echo $active;
-                            echo $name;
-                            echo $pass;
-                            echo $count;
+                            
                         }
                         
                         mysqli_close($conn);
