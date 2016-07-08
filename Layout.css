@@ -5,7 +5,7 @@ p{margin:0 10px 10px}
 a{padding:5px; text-decoration:none; color: #70cdf3}
 div#container{text-align:left; margin:0 auto; background: #ffffff; position:absolute;  top:25px; left:25px; right:25px; bottom:25px; padding:15px; font-size:16px}
 div#header{text-align:left; position:absolute; top:10px; left:25px; right:25px; height:120px; line-height:100px; margin:0; padding-left:10px; background-color:#F3F2ED; font-size:48px}
-div#login{text-align:left; font-size:16px; background-color:#F3F2ED; position:absolute; top:12px; right:25px; width:150px; height:100px}
+div#login{text-align:left; font-size:16px; background-color:#F3F2ED; position:absolute; top:12px; right:25px; width:150px; height:100px; border:1px solid black}
 div#footer{text-align:left; position:absolute; top:1200px; left:25px; right:25px; height:30px; background:#BFBD93}
 div#footer p{margin:0; padding:5px 10px}
 div#comments{ text-align:left; top:890px; left:25px; right:175px; height:310px; position:absolute; background:#CCC8B3}
