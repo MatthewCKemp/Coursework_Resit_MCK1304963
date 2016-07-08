@@ -57,6 +57,7 @@
                             if ($count == 1) {
                                 $_SESSION['login'] = "$name";
                                 echo "correct login";
+                                echo $_SESSION['login'];
                             } else {
                                 $error = "Incorrect login, please retry";
                             }
