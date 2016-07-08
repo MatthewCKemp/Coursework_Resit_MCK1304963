@@ -4,7 +4,27 @@
         <meta charset="UTF-8">
         <title>BugSplat Login</title>
         <link rel="stylesheet" type ="text/css" href="layout.css" />
+
+        <?php
+        $username = "b56f549a76a983";
+        $password = "a3035583";
+        $servername = "us-cdbr-azure-west-c.cloudapp.net";
+
+        // Create connection to DB
+        $conn = mysqli_connect($servername, $username, $password);
+        $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
+        // Check the connectionas
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        //echo "Connected successfully";
+        if (!$select) {
+            die(" Selection failed: " . mysqli_connect_error());
+        }
+        //echo " DB Selected successfully";
+        ?>
     </head>
+
     <body>
     <div id ="header">Login</div>
     <div id="login">
@@ -13,6 +33,28 @@
             Password: <input type="password" name="password"><br>
             <input type="submit" value ="Login"/><br/>
         </form>
+        <?php
+            if("POST") { //More secure than GET
+
+                $name = mysqli_real_escape_string($conn,$_POST['username']);
+                $Pass = mysqli_real_escape_string($conn,$_POST['password']);
+
+                $Search = "SELECT user_ID, name FROM Users WHERE name = '$name' AND user_ID = '$Pass'";
+                $row = mysqli_fetch_array($Search) or die(mysqli_error($conn));
+
+
+                    if(!empty($row['username']) AND !empty($row['password'])) {
+
+                    $_SESSION['Login'] = $row['username'];
+                    echo "correct login";
+
+                    }else {
+                    echo "Incorrect login, please retry";
+                    }
+            }
+            mysqli_close($conn);
+        ?>
+
     </div>
     <div id="navigation">
         <ul>
@@ -32,44 +74,8 @@
     <div id="footer">
         <p><strong>Legal shit</strong></p>
     </div>
-        <?php
-        $username = "b56f549a76a983";
-        $password = "a3035583";
-        $servername = "us-cdbr-azure-west-c.cloudapp.net";
 
-        // Create connection to DB
-        $conn = mysqli_connect($servername, $username, $password);
-        $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
-        // Check the connectionas
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-            //echo "Connected successfully";
-            if (!$select) {
-                die(" Selection failed: " . mysqli_connect_error());
-            }
-            //echo " DB Selected successfully";
 
-        if("POST") { //More secure than GET
-                
-            $name = mysqli_real_escape_string($conn,$_POST['username']);
-            $Pass = mysqli_real_escape_string($conn,$_POST['password']);
 
-            $Search = "SELECT user_ID, name FROM Users WHERE name = '$name' AND user_ID = '$Pass'";
-            $row = mysqli_fetch_array($Search) or die(mysqli_error($conn));
-
-            
-            if(!empty($row['username']) AND !empty($row['password'])) {
-                
-                $_SESSION['Login'] = $row['username'];
-                echo "correct login";
-            
-            }else {
-                $error = "Incorrect login";
-                echo $error . mysqli_error($conn);
-            }
-        }
-        mysqli_close($conn);
-        ?>
     </body>
 </html>
