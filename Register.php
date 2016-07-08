@@ -4,17 +4,27 @@
         <meta charset="UTF-8">
         <title>BugSplat Registration</title>
         <link rel="stylesheet" type ="text/css" href="layout.css" />
+        <?php
+        $username = "b56f549a76a983";
+        $password = "a3035583";
+        $servername = "us-cdbr-azure-west-c.cloudapp.net";
+
+        // Create connection to DB
+        $conn = mysqli_connect($servername, $username, $password);
+        $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
+        // Check the connectionas
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        //echo "Connected successfully";
+        if (!$select) {
+            die(" Selection failed: " . mysqli_connect_error());
+        }
+        //echo " DB Selected successfully";
+        ?>
     </head>
     <body>
-        <div id ="header">Register</div>    
-        <div id="login">
-            <form action="Register.php" method="post">
-                Please fill in the following details to create your account:<br>
-                Name (This will become your username): <input type="text" name="U_name"><br>
-                Home Country: <input type="text" name="U_country"><br>
-                <input type="submit" value ="Register"/><br/>
-            </form>
-        </div>
+        <div id ="header">Register</div>
         <div id="navigation">
             <ul>
                 <p><strong>Links</strong></p>
@@ -25,45 +35,34 @@
             </ul>
         </div>
         <div id="content">
-            <p><strong>Main writing</strong></p>
+            <div id = "container">
+                <form action="Register.php" method="post">
+                    Please fill in the following details to create your account:<br>
+                    Name (This will become your username): <input type="text" name="U_name"><br>
+                    Home Country: <input type="text" name="U_country"><br>
+                    <input type="submit" value ="Register"/><br/>
+                </form>
+                <?php
+                $UserName = mysqli_real_escape_string($conn, $_POST["U_name"]);
+                $UserCountry = mysqli_real_escape_string($conn, $_POST["U_country"]);
+
+                $UserInsert = "INSERT INTO Users (name, country) VALUES ('$UserName', '$UserCountry')";
+                if(mysqli_query($conn, $UserInsert)){
+                    echo " Your account has been created successfully .";
+                    echo "Your password is: " . $UserCountry;
+
+                } else {
+                    echo " ERROR: Unable to create account" . mysqli_error($conn);
+                }
+                mysqli_close($conn);
+                ?>
+            </div>
         </div>
         <div id="comments">
             <p><strong>Comments</strong></p>
         </div>
         <div id="footer">
-            <p><strong>Legal shit</strong></p>
+            <p><strong>Legal stuff</strong></p>
         </div>
-        
-        <?php
-        $username = "b56f549a76a983";
-        $password = "a3035583";
-        $servername = "us-cdbr-azure-west-c.cloudapp.net";
-        
-        // Create connection to DB
-        $conn = mysqli_connect($servername, $username, $password);
-        $select = mysqli_select_db($conn, 'mck1304963_cwrs_db');
-        // Check the connectionas
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-            //echo "Connected successfully";
-            if (!$select) {
-                die(" Selection failed: " . mysqli_connect_error());
-            }
-            //echo " DB Selected successfully";
-        
-            $UserName = mysqli_real_escape_string($conn, $_POST["U_name"]);
-            $UserCountry = mysqli_real_escape_string($conn, $_POST["U_country"]);
-        
-            $UserInsert = "INSERT INTO Users (name, country) VALUES ('$UserName', '$UserCountry')";
-                if(mysqli_query($conn, $UserInsert)){
-                    echo " Your account has been created successfully .";
-                    echo "Your password is: " . $UserCountry;
-                    
-                } else {
-                    echo " ERROR: Unable to create account" . mysqli_error($conn);
-                }
-        mysqli_close($conn);
-        ?>
-</body>
+    </body>
 </html>
