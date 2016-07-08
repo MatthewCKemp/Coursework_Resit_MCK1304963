@@ -55,7 +55,7 @@
                             $count = mysqli_num_rows($result);
 
                             if ($count == 1) {
-                                $_SESSION['login'] = "$name";
+                                $_SESSION['login'] = "$result";
                                 echo "Correct login ";
                                 echo $_SESSION['login'];
                             } else {
