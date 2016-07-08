@@ -32,21 +32,23 @@
                 Password: <input type="password" name="password"><br>
                 <input type="submit" value ="Login"/><br/>
             </form>
-            <?php
 
-                $name = mysqli_real_escape_string($conn,$_POST['username']);
-                $Pass = mysqli_real_escape_string($conn,$_POST['password']);
+            <?php echo "Username: " . $_POST["username"]; ?><br>
+            <?php echo "Password: " .$_POST["password"];   
+            
+            $name = mysqli_real_escape_string($conn,$_POST['username']);
+            $Pass = mysqli_real_escape_string($conn,$_POST['password']);
     
-                $Search = "SELECT user_ID, name FROM Users WHERE name = '$name' AND user_ID = '$Pass'";
-                $row = mysqli_fetch_array($Search) or die(mysqli_error($conn));
+            $Search = "SELECT user_ID, name FROM Users WHERE name = '$name' AND user_ID = '$Pass'";
+            $row = mysqli_fetch_array($Search) or die(mysqli_error($conn));
     
-                    if(!empty($row['username']) AND !empty($row['password'])) {
-                        $_SESSION['Login'] = $row['username'];
-                        echo "correct login";
+                if(!empty($row['username']) AND !empty($row['password'])) {
+                    $_SESSION['Login'] = $row['username'];
+                    echo "correct login";
     
-                        }else {
-                        echo "Incorrect login, please retry";
-                        }
+                }else {
+                    echo "Incorrect login, please retry";
+                }
                 
                 mysqli_close($conn);
             ?>
