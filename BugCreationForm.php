@@ -40,8 +40,8 @@
             <div id="content">
                 <div id="container">
                     <form action="BugCreationForm.php" method="post">
-                        Title of Bug: <input type="text" name="B_title"><br>
-                        Description (200char max): <input type="text" name="B_Desc"><br>
+                        Title of Bug: <input type="text" name="B_title" SIZE="20"><br>
+                        Description (200char max): <input type="text" name="B_Desc" SIZE="200"><br>
                         Author name: <input type="text" name="B_Author"><br>
                         <input type="submit" value ="Create">
                     </form>
