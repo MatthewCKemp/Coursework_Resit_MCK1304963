@@ -56,22 +56,17 @@
             $Pass = mysqli_real_escape_string($conn,$_POST['password']);
 
             $Search = "SELECT user_ID, name FROM Users WHERE name = '$name' AND user_ID = '$Pass'";
-            $result = mysqli_query($conn,$search);
-            $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-            $active = $row['active'];
+            $row = mysqli_fetch_array($Search) or die(mysqli_error($conn));
 
-            $count = mysqli_num_rows($result);
             
-            if($count == 1) {
-                $_SESSION['login_user'] = 'username';
+            if(!empty($row['username']) AND !empty($row['password'])) {
+                
+                $_SESSION['Login'] = $row['username'];
                 echo "correct login";
-                echo $result;
-                header("location: Welcome.php");
             
             }else {
-                $error = "<Incorrect login";
+                $error = "Incorrect login";
                 echo $error . mysqli_error($conn);
-                echo $result;
             }
         }
         mysqli_close($conn);
