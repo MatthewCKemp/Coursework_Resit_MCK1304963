@@ -48,9 +48,17 @@
 
                     $name = mysqli_real_escape_string($conn,$_POST['username']);
                     $Pass = mysqli_real_escape_string($conn,$_POST['password']);
-
+                    
                     $Search = "SELECT user_ID, name FROM Users WHERE name = '$name' AND user_ID = '$Pass'";
-                   // $row = mysqli_fetch_array($Search) or die(mysqli_error($conn));
+                    $result = mysqli_query($conn,$Search);
+                    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+                    $active = $row['active'];
+                    $count = mysqli_num_rows($result);
+
+                    if($count == 1){
+                        $_SESSION['login'] ="$name";
+                    }
+                    
                     if(!empty($row['username']) AND !empty($row['password'])) {
                         $_SESSION['Login'] = $row['username'];
                         echo "correct login";
