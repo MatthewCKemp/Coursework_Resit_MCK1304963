@@ -61,15 +61,17 @@
             $active = $row['active'];
 
             $count = mysqli_num_rows($result);
-            echo $result;
+            
             if($count == 1) {
                 $_SESSION['login_user'] = 'username';
                 echo "correct login";
+                echo $result;
                 header("location: Welcome.php");
             
             }else {
                 $error = "<Incorrect login";
                 echo $error . mysqli_error($conn);
+                echo $result;
             }
         }
         mysqli_close($conn);
