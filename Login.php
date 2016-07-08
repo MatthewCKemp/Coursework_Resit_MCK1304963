@@ -56,22 +56,10 @@
 
                             if ($count == 1) {
                                 $_SESSION['login'] = "$name";
-                            }
-
-                            if (!empty($row['username']) AND !empty($row['password'])) {
-                                $_SESSION['Login'] = $row['username'];
                                 echo "correct login";
                             } else {
-                                echo "Incorrect login, please retry";
-                                echo "s " . $search;
-                                echo "s " . $result;
-                                echo "s " . $row;
-                                echo "s " . $active;
-                                echo "s " . $name;
-                                echo "s " . $pass;
-                                echo "s " . $count;
+                                $error = "Incorrect login, please retry";
                             }
-                            
                         }
                         
                         mysqli_close($conn);
