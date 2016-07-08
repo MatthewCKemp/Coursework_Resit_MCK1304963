@@ -59,7 +59,7 @@
                                 echo "correct login";
                                 echo $_SESSION['login'];
                             } else {
-                                $error = "Incorrect login, please retry";
+                                echo "Incorrect login, please retry";
                             }
                         }
                         
