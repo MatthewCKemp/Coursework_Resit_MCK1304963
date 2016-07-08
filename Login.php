@@ -42,31 +42,39 @@
                         Password: <input type="password" name="password"><br>
                         <input type="submit" value ="Login"/><br/>
                     </form>
+                    <?php
+                        if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-                    <?php echo "Username: " . $_POST["username"]; ?><br>
-                    <?php echo "Password: " .$_POST["password"];
+                            $name = mysqli_real_escape_string($conn, $_POST['username']);
+                            $Pass = mysqli_real_escape_string($conn, $_POST['password']);
 
-                    $name = mysqli_real_escape_string($conn,$_POST['username']);
-                    $Pass = mysqli_real_escape_string($conn,$_POST['password']);
-                    
-                    $Search = "SELECT user_ID, name FROM Users WHERE name = '$name' AND user_ID = '$Pass'";
-                    $result = mysqli_query($conn,$Search);
-                    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-                    $active = $row['active'];
-                    $count = mysqli_num_rows($result);
+                            $Search = "SELECT name, country FROM Users WHERE name = '$name' AND country = '$Pass'";
+                            $result = mysqli_query($conn, $Search);
+                            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                            $active = $row['active'];
+                            $count = mysqli_num_rows($result);
 
-                    if($count == 1){
-                        $_SESSION['login'] ="$name";
-                    }
-                    
-                    if(!empty($row['username']) AND !empty($row['password'])) {
-                        $_SESSION['Login'] = $row['username'];
-                        echo "correct login";
-                    }else {
-                        echo "Incorrect login, please retry";
-                    }
-                    mysqli_close($conn);
-                    ?>
+                            if ($count == 1) {
+                                $_SESSION['login'] = "$name";
+                            }
+
+                            if (!empty($row['username']) AND !empty($row['password'])) {
+                                $_SESSION['Login'] = $row['username'];
+                                echo "correct login";
+                            } else {
+                                echo "Incorrect login, please retry";
+                            }
+                            echo $search;
+                            echo $result;
+                            echo $row;
+                            echo $active;
+                            echo $name;
+                            echo $pass;
+                            echo $count;
+                        }
+                        
+                        mysqli_close($conn);
+                        ?>
                 </div>
             </div>
             <div id="comments">
