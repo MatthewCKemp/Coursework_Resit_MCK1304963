@@ -69,7 +69,7 @@
                     <p><strong>Comments</strong></p>
                 </div>
             <div id="footer">
-                <p><strong>Legal shit</strong></p>
+                <p><strong>Legal stuff</strong></p>
             </div>
         </body>
 </html>
