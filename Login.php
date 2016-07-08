@@ -50,7 +50,7 @@
                     $Pass = mysqli_real_escape_string($conn,$_POST['password']);
 
                     $Search = "SELECT user_ID, name FROM Users WHERE name = '$name' AND user_ID = '$Pass'";
-                    $row = mysqli_fetch_array($Search) or die(mysqli_error($conn));
+                   // $row = mysqli_fetch_array($Search) or die(mysqli_error($conn));
                     if(!empty($row['username']) AND !empty($row['password'])) {
                         $_SESSION['Login'] = $row['username'];
                         echo "correct login";
