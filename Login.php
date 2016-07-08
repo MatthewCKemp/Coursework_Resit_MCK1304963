@@ -21,7 +21,7 @@
             die(" Selection failed: " . mysqli_connect_error());
         }
         //echo " DB Selected successfully";
-
+        session_start();
         ?>
     </head>
         <body>
