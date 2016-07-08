@@ -49,19 +49,19 @@
                 die(" Selection failed: " . mysqli_connect_error());
             }
             //echo " DB Selected successfully";
-            
+
         if("POST") { //More secure than GET
                 
             $name = mysqli_real_escape_string($conn,$_POST['username']);
             $Pass = mysqli_real_escape_string($conn,$_POST['password']);
 
-            $Search = "SELECT * FROM Users WHERE name = '$name' AND country = '$Pass'";
+            $Search = "SELECT user_ID, name FROM Users WHERE name = '$name' AND user_ID = '$Pass'";
             $result = mysqli_query($conn,$search);
             $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
             $active = $row['active'];
 
             $count = mysqli_num_rows($result);
-
+            echo $result;
             if($count == 1) {
                 $_SESSION['login_user'] = 'username';
                 echo "correct login";
