@@ -40,7 +40,6 @@
                         //SQL query
                         $query = "SELECT bug_ID, title, bugposted FROM Bugs ORDER BY bug_ID DESC";
                         $result = mysqli_query($conn, $query);
-                        $i=0;
                         
                         if (mysqli_num_rows($result) > 0 ){
                             echo "<table><tr><th>Bug Name</th><th>Date Posted</th></tr>";
@@ -53,11 +52,10 @@
                         }
                         mysqli_close($conn);
                         ?>
-                    
                 </div>
             </div>
             <div id="footer">
-                <p><strong>Legal shit</strong></p>
+                <p><strong>Legal stuff</strong></p>
             </div>
         
             
