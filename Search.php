@@ -50,10 +50,9 @@
             foreach ($conn->query($users) as $row2){
                 echo "<option value=$row2[name]>$row2[name]</option>";
             }
-
+            echo "Test" . $_SESSION['login'];
             echo "</select>";
             mysqli_close($conn);
-            print_r($_SESSION);
             ?>
     </div>
 </div>
