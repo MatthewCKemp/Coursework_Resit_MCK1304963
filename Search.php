@@ -52,6 +52,22 @@
             }
             echo "</select>";
             mysqli_close($conn);
+
+            if (!empty($keywords) AND !empty($users)){
+                $SearchResult = "SELECT title, description, dateposted FROM Bugs, Keywords, Users WHERE Bugs.bug_ID = Keywords.bug_ID AND Bugs.bug_ID = Users.user_ID AND Keywords.key_description = $keywords AND Users.name = $users";
+                $result = mysqli_query($conn, $SearchResult);
+
+                if (mysqli_num_rows($result) > 0 ){
+                    echo "<table><tr><th>Keyword used</th><th>Author</th></tr>";
+                    while ($rows = mysqli_fetch_assoc($result)) { //Outputs data in each row.
+                        echo "<tr><td>" . $rows["key_description"] . "</td><td>" . $rows["name"] . "</tr></td>";
+                    }
+                    echo"</table>";
+                } else {
+                    echo "no results found";
+                }
+            
+            }
             ?>
     </div>
 </div>
