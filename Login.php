@@ -62,7 +62,9 @@
                                 echo "Incorrect login, please retry";
                             }
                         }
-                        
+                        $ID = "SELECT user_ID FROM Users WHERE name = '$name'";
+                        $_SESSION['login_ID'] = $ID;
+                        echo $_SESSION['login_ID'];
                         mysqli_close($conn);
                         ?>
                 </div>
