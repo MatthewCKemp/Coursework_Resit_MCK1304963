@@ -53,6 +53,7 @@
 
             echo "</select>";
             mysqli_close($conn);
+            print_r($_SESSION);
             ?>
     </div>
 </div>
