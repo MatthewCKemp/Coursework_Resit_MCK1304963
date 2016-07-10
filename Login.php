@@ -48,11 +48,6 @@
                             $name = mysqli_real_escape_string($conn, $_POST['username']);
                             $Pass = mysqli_real_escape_string($conn, $_POST['password']);
                             
-                            $IDSearch = "SELECT user_ID FROM Users WHERE name = '$name'";
-                            $ID = mysqli_query($conn, $IDSearch);
-                            $_SESSION['login_ID'] = $ID;
-                           
-                            
                             $Search = "SELECT user_ID FROM Users WHERE name = '$name' AND country = '$Pass'";
                             $result = mysqli_query($conn, $Search);
                             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -63,8 +58,6 @@
                                 $_SESSION['login'] = "$name";
                                 echo "Correct login ";
                                 echo $_SESSION['login'];
-                                echo $_SESSION['login_ID'];
-                                echo $ID;
                             } else {
                                 echo "Incorrect login, please retry";
                             }
