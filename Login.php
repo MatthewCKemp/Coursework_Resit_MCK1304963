@@ -48,7 +48,8 @@
                             $name = mysqli_real_escape_string($conn, $_POST['username']);
                             $Pass = mysqli_real_escape_string($conn, $_POST['password']);
                             
-                            $ID = "SELECT user_ID FROM Users WHERE name = '$name'";
+                            $IDSearch = "SELECT user_ID FROM Users WHERE name = '$name'";
+                            $ID = mysqli_query($conn, $IDSearch);
                             $_SESSION['login_ID'] = $ID;
                            
                             
