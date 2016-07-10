@@ -64,6 +64,7 @@
                                 echo "Correct login ";
                                 echo $_SESSION['login'];
                                 echo $_SESSION['login_ID'];
+                                echo $ID;
                             } else {
                                 echo "Incorrect login, please retry";
                             }
