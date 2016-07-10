@@ -51,11 +51,11 @@
                 echo "<option value=$row2[name]>$row2[name]</option>";
             }
             echo "</select>";
-            mysqli_close($conn);
+
 
             if (!empty($keywords) AND !empty($users)){
                 $SearchResult = "SELECT title, description, dateposted FROM Bugs, Keywords, Users WHERE Bugs.bug_ID = Keywords.bug_ID AND Bugs.bug_ID = Users.user_ID AND Keywords.key_description = $keywords AND Users.name = $users";
-                $result = mysqli_query($conn, $SearchResult);
+                $result = mysqli_query($conn, $SearchResult) or die(mysqli_error());
 
                 if (mysqli_num_rows($result) > 0 ){
                     echo "<table><tr><th>Keyword used</th><th>Author</th></tr>";
@@ -68,11 +68,12 @@
                 }
             
             }
+            mysqli_close($conn);
             ?>
     </div>
 </div>
 <div id="footer">
-    <p><strong>Legal shit</strong></p>
+    <p><strong>Legal stuff</strong></p>
 </div>
 
 
