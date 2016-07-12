@@ -37,7 +37,7 @@
             </div>
             <div id="content">
                 <div id="container">
-                    <form action="Login.php" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                         <label>Username: </label><input type="text" name="username"/><br><br/>
                         <label>Password: </label><input type="password" name="password"/><br><br/>
                         <input type="submit" value ="Login"/><br/>
