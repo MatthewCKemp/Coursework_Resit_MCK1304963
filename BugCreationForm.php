@@ -36,9 +36,9 @@
             </div>
             <div id="content">
                 <div id="container">
-                    <form action="BugCreationForm.php" method="post">
+                    <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">>
                         Title of Bug: <input type="text" name="B_title"><br>
-                        Description (200char max): <input type="text" name="B_Desc"><br>
+                        Description (200char max): <textarea name="B_Desc" rows="5" cols = "40"><br>
                         Author name: <input type="text" name="B_Author"><br>
                         <input type="submit" value ="Create">
                     </form>
