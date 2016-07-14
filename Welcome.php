@@ -20,6 +20,7 @@
                 <div id="container">
                     <table> <th>Most recent bugs</th>
                         <?php
+                        echo "currently logged in as " . $_SESSION['login'];
                         $username = "b56f549a76a983";
                         $password = "a3035583";
                         $servername = "us-cdbr-azure-west-c.cloudapp.net";
