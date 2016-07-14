@@ -36,7 +36,7 @@
         </div>
         <div id="content">
             <div id = "container">
-                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">" 
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     Please fill in the following details to create your account:<br>
                     Name (This will become your username): <input type="text" name="U_name"><br>
                     Home Country: <input type="text" name="U_country"><br>
