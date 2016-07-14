@@ -22,10 +22,13 @@
         }
         //echo " DB Selected successfully";
         session_start();
+
+        //Query based on user selection pulls all required data
+
         ?>
     </head>
     <body>
-        <div id ="header">Login</div>
+        <div id ="header">Login<!--Bug header--></div>
         <div id="navigation">
             <ul>
                 <p><strong>Links</strong></p>
@@ -37,10 +40,11 @@
         </div>
         <div id="content">
             <div id="container">
+                <!--Bug info + creator and location-->
             </div>
         </div>
         <div id="comments">
-            <p><strong>Comments</strong></p>
+            <p><strong>Comments <!--RELEVANT COMMENTS--> </strong></p>
         </div>
         <div id="footer">
             <p><strong>Legal stuff</strong></p>
