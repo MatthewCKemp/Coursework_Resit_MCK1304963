@@ -55,6 +55,7 @@
                             $count = mysqli_num_rows($result);
 
                             if ($count == 1) {
+                                session_start();
                                 $_SESSION['login'] = "$name";
                                 echo "Correct login ";
                                 echo $_SESSION['login'];
