@@ -40,16 +40,17 @@
                     Please fill in the following details to create your account:<br>
                     Name (This will become your username): <input type="text" name="U_name"><br>
                     Home Country: <input type="text" name="U_country"><br>
+                    Set Password <input type = "password" name="U_password"><br>
                     <input type="submit" value ="Register"/><br/>
                 </form>
                 <?php
                 $UserName = mysqli_real_escape_string($conn, $_POST["U_name"]);
                 $UserCountry = mysqli_real_escape_string($conn, $_POST["U_country"]);
-
-                $UserInsert = "INSERT INTO Users (name, country) VALUES ('$UserName', '$UserCountry')";
+                $UserPassword = mysqli_real_escape_string($conn, $_POST["U_password"]);
+                
+                $UserInsert = "INSERT INTO Users (name, country, password) VALUES ('$UserName', '$UserCountry', '$UserPassword')";
                 if(mysqli_query($conn, $UserInsert)){
                     echo " Your account has been created successfully .";
-                    echo "Your password is: " . $UserCountry;
                 } else {
                     echo " ERROR: Unable to create account" . mysqli_error($conn);
                 }
