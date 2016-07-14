@@ -48,7 +48,7 @@
                             $name = mysqli_real_escape_string($conn, $_POST['username']);
                             $Pass = mysqli_real_escape_string($conn, $_POST['password']);
                             
-                            $Search = "SELECT user_ID FROM Users WHERE name = '$name' AND country = '$Pass'";
+                            $Search = "SELECT user_ID FROM Users WHERE name = '$name' AND password = '$Pass'";
                             $result = mysqli_query($conn, $Search);
                             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             $active = $row['active'];
