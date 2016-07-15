@@ -39,9 +39,9 @@
             <div id = "container">
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     Please fill in the following details to create your account:<br>
-                    Name (This will become your username): <input type="text" name="U_name"><br>
-                    Home Country: <input type="text" name="U_country"><br>
-                    Set Password <input type = "password" name="U_password"><br>
+                    Name (This will become your username): <input type="text" name="U_name" required><br>
+                    Home Country: <input type="text" name="U_country" required><br>
+                    Set Password <input type = "password" name="U_password" required><br>
                     <input type="submit" value ="Register"/><br/>
                 </form>
                 <?php
