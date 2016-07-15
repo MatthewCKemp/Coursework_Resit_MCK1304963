@@ -50,10 +50,12 @@
                 $UserPassword = mysqli_real_escape_string($conn, $_POST["U_password"]);
                 
                 $UserInsert = "INSERT INTO Users (name, country, password) VALUES ('$UserName', '$UserCountry', '$UserPassword')";
-                if(mysqli_query($conn, $UserInsert)){
-                    echo " Your account has been created successfully .";
-                } else {
-                    echo " ERROR: Unable to create account" . mysqli_error($conn);
+                if(!empty($UserName)AND !empty($UserCountry) AND !empty($UserPassword)) {
+                    if (mysqli_query($conn, $UserInsert)) {
+                        echo " Your account has been created successfully .";
+                    } else {
+                        echo " ERROR: Unable to create account" . mysqli_error($conn);
+                    }
                 }
                 mysqli_close($conn);
                 ?>
