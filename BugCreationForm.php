@@ -5,6 +5,7 @@
         <title>BugSplat: Create a New Bug</title>
         <link rel="stylesheet" type ="text/css" href="layout.css" />
         <?php
+        session_start();
         $username = "b56f549a76a983";
         $password = "a3035583";
         $servername = "us-cdbr-azure-west-c.cloudapp.net";
@@ -53,7 +54,7 @@
                     $BugAuthor = mysqli_real_escape_string($conn, $_POST["B_Author"]);
                     $BugDate = mysqli_real_escape_string($conn, date ("Y-m-d)"));
 
-                    $Insert = "INSERT INTO Bugs (title, description, bugposted) VALUES ('$BugTitle', '$BugDesc', '$BugDate')";
+                    $Insert = "INSERT INTO Bugs (title, description, bugposted, user_ID) VALUES ('$BugTitle', '$BugDesc', '$BugDate', '{$_SESSION['login']}'";
                     if(mysqli_query($conn, $Insert)){
                         echo " Data successfully inserted.";
                     } else {
