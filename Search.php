@@ -19,6 +19,7 @@
 <div id="content">
     <div id="container">
             <?php
+            session_start();
             $username = "b56f549a76a983";
             $password = "a3035583";
             $servername = "us-cdbr-azure-west-c.cloudapp.net";
