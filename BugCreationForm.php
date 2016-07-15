@@ -40,21 +40,20 @@
                     <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
                         Title of Bug: <input type="text" name="B_title" required><br>
                         Description (200char max): <input type ="text" name="B_Desc" required><br>
-                        Author name: <input type="text" name="B_Author" required><br>
                         <input type="submit" value ="Create">
                     </form>
                     
                     <?php echo "Title: " . $_POST["B_title"]; ?><br>
                     <?php echo "Description: " .$_POST["B_Desc"]; ?><br>
-                    <?php echo "Author: " . $_POST["B_Author"]; ?><br>
                     <?php echo "Date: " . date ("Y-m-d");
 
                     $BugTitle = mysqli_real_escape_string($conn, $_POST["B_title"]);
                     $BugDesc = mysqli_real_escape_string($conn, $_POST["B_Desc"]);
-                    $BugAuthor = mysqli_real_escape_string($conn, $_POST["B_Author"]);
                     $BugDate = mysqli_real_escape_string($conn, date ("Y-m-d)"));
-
-                    $Insert = "INSERT INTO Bugs (title, description, bugposted, user_ID) VALUES ('$BugTitle', '$BugDesc', '$BugDate',{$_SESSION['login']}";
+                    $ID = mysqli_real_escape_string($conn,$_SESSION['login']);
+                    
+                    
+                    $Insert = "INSERT INTO Bugs (title, description, bugposted, user_ID) VALUES ('$BugTitle', '$BugDesc', '$BugDate','$ID''";
                     if(mysqli_query($conn, $Insert)){
                         echo " Data successfully inserted.";
                     } else {
