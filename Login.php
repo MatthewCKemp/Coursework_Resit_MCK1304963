@@ -56,7 +56,7 @@
 
                             if ($count == 1) {
                                 session_start();
-                                $_SESSION['login'] = "$name";
+                                $_SESSION['login'] = "user_ID";
                                 echo "Correct login ";
                                 echo $_SESSION['login'];
                             } else {
