@@ -53,7 +53,7 @@
                     $ID = mysqli_real_escape_string($conn,$_SESSION['login']);
                     
                     
-                    $Insert = "INSERT INTO Bugs (title, description, bugposted, user_ID) VALUES ('$BugTitle', '$BugDesc', '$BugDate','$ID'";
+                    $Insert = "INSERT INTO Bugs (title, description, bugposted, user_ID) VALUES ('$BugTitle', '$BugDesc', '$BugDate','$ID')";
                     if(mysqli_query($conn, $Insert)){
                         echo " Data successfully inserted.";
                     } else {
