@@ -54,7 +54,7 @@
                     $BugAuthor = mysqli_real_escape_string($conn, $_POST["B_Author"]);
                     $BugDate = mysqli_real_escape_string($conn, date ("Y-m-d)"));
 
-                    $Insert = "INSERT INTO Bugs (title, description, bugposted, user_ID) VALUES ('$BugTitle', '$BugDesc', '$BugDate', '{$_SESSION['login']}'";
+                    $Insert = "INSERT INTO Bugs (title, description, bugposted, user_ID) VALUES ('$BugTitle', '$BugDesc', '$BugDate',{$_SESSION['login']}";
                     if(mysqli_query($conn, $Insert)){
                         echo " Data successfully inserted.";
                     } else {
