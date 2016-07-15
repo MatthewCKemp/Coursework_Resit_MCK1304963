@@ -5,6 +5,7 @@
         <title>BugSplat Login</title>
         <link rel="stylesheet" type ="text/css" href="layout.css" />
         <?php
+        session_start();
         $username = "b56f549a76a983";
         $password = "a3035583";
         $servername = "us-cdbr-azure-west-c.cloudapp.net";
