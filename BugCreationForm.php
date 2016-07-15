@@ -52,13 +52,14 @@
                     $BugDate = mysqli_real_escape_string($conn, date ("Y-m-d)"));
                     $ID = mysqli_real_escape_string($conn,$_SESSION['login']);
                     
-                    
-                    $Insert = "INSERT INTO Bugs (title, description, bugposted, user_ID) VALUES ('$BugTitle', '$BugDesc', '$BugDate','$ID')";
-                    if(mysqli_query($conn, $Insert)){
-                        echo " Data successfully inserted.";
-                    } else {
-                        echo " ERROR: Unable to insert data" . mysqli_error($conn);
-                    }
+                    if(!empty($BugTitle)AND !empty($BugDesc)){
+                        $Insert = "INSERT INTO Bugs (title, description, bugposted, user_ID) VALUES ('$BugTitle', '$BugDesc', '$BugDate','$ID')";
+                        if(mysqli_query($conn, $Insert)){
+                            echo " Data successfully inserted.";
+                        } else {
+                            echo " ERROR: Unable to insert data" . mysqli_error($conn);
+                        }
+                    }    
                     mysqli_close($conn);
                     ?>
                 </div>
