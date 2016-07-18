@@ -96,7 +96,7 @@
                 $CommentInsert = "INSERT INTO Comments (com_content, bug_ID, user_ID,) VALUES ('$CommentInsert','$UserID','$BugID')";
                 
                 if(!empty($CommentCreated)AND !empty($UserID) AND !empty($BugID)) {
-                    if (mysqli_query($conn, $UserInsert)) {
+                    if (mysqli_query($conn, $CommentInsert)) {
                         echo "<br>" . "Your comment has been created successfully .";
                     } else {
                         echo "<br>" . " ERROR: You must login to comment" . mysqli_error($conn);
