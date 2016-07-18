@@ -2,7 +2,7 @@
 <html lang=en">
     <head>
         <meta charset="UTF-8">
-        <title>BugSplat Login</title>
+        <title>BugSplat</title>
         <link rel="stylesheet" type ="text/css" href="layout.css" />
         <?php
         session_start();
@@ -78,6 +78,30 @@
             } else {
                 echo "There are currently no comments on this bug";
             }
+            ?>
+            
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                Remember to use '@' to indicate who you are replying to: <br>
+                Comment): <input type="text" name="Comment_New" required><br>
+                <input type="submit" value ="Post"/><br/>
+            </form>
+           
+            <?php
+            
+            $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
+            $CommentInsert = "INSERT INTO Comments (com_content, bug_ID, user_ID,) VALUES ('$CommentInsert','$UserID','$BugID')";
+            $UserID = mysqli_real_escape_string($conn,$_SESSION['login']);
+            $BugID = mysqli_real_escape_string($conn,$_SESSION['Bug']);
+            
+            if(!empty($UserName)AND !empty($UserID) AND !empty($BugID)) {
+                if (mysqli_query($conn, $UserInsert)) {
+                    echo " Your comment has been created successfully .";
+                } else {
+                    echo " ERROR: You must login to comment" . mysqli_error($conn);
+                }
+            }
+            mysqli_close($conn);
+
             ?>
         </div>
         <div id="footer">
