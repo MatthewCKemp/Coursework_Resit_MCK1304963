@@ -93,7 +93,7 @@
             $UserID = mysqli_real_escape_string($conn,$_SESSION['login']);
             $BugID = mysqli_real_escape_string($conn,$_SESSION['Bug']);
             
-            if(!empty($UserName)AND !empty($UserID) AND !empty($BugID)) {
+            if(!empty($CommentCreated)AND !empty($UserID) AND !empty($BugID)) {
                 if (mysqli_query($conn, $UserInsert)) {
                     echo " Your comment has been created successfully .";
                 } else {
