@@ -42,10 +42,43 @@
         <div id="content">
             <div id="container">
                 <!--Bug info + creator and location-->
+                <?php
+                $BugQuery = "SELECT title, description, bugposted, bugfixed, status, name, country FROM Bugs, Users WHERE Users.bug_ID = Bugs.bug_ID";
+                $BugResult = mysqli_query($conn, $BugQuery);
+
+                if (mysqli_num_rows($BugResult) > 0 ){
+                    while ($BugRows = mysqli_fetch_assoc($BugResult)) { 
+                        echo "<br>" . $BugRows["title"] . "<br>" . $BugRows["description"] . "<br>" . $Bugrows["bugposted"] . "<br>" . $Bugrows["bugfixed"]. "<br>" . $Bugrows["name"]. "<br>" . $Bugrows["country"];
+                        $Status = "Bugs.status";
+                    }
+                    echo"</table>";
+                } else {
+                    echo "An error has occurred. This bug does not exist.";
+                }
+                if($Status = "NULL") {
+                    echo "Bug has not been solved";
+                }else{
+                    echo "Bug has been solved";
+                }
+                
+                ?>
             </div>
         </div>
         <div id="comments">
             <p><strong>Comments <!--RELEVANT COMMENTS--> </strong></p>
+            <?php
+            $CommentQuery = "SELECT com_content, name, bugposted FROM Comments, Users WHERE Comments.user_ID = Users.user_ID AND Comments.bug_ID = Bugs.bug_ID";
+            $CommentResult = mysqli_query($conn, $CommentQuery);
+
+            if (mysqli_num_rows($CommentResult) > 0 ){
+                while ($CommentRows = mysqli_fetch_assoc($CommentResult)) { //Outputs data in each row.
+                    echo "<br>" . $CommentRows["name"] . "<br>" . $CommentRows["com_content"] . "<br>";
+                }
+                echo"</table>";
+            } else {
+                echo "There are currently no comments on this bug";
+            }
+            ?>
         </div>
         <div id="footer">
             <p><strong>Legal stuff</strong></p>
