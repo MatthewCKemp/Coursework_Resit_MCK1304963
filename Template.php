@@ -90,9 +90,10 @@
                 <?php
                 
                 $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
-                $CommentInsert = "INSERT INTO Comments (com_content, bug_ID, user_ID,) VALUES ('$CommentInsert','$UserID','$BugID')";
                 $UserID = mysqli_real_escape_string($conn,$_SESSION['login']);
-                $BugID = mysqli_real_escape_string($conn,$_SESSION['Bug']);
+                $BugID = "1"; //mysqli_real_escape_string($conn,$_SESSION['Bug']);
+                
+                $CommentInsert = "INSERT INTO Comments (com_content, bug_ID, user_ID,) VALUES ('$CommentInsert','$UserID','$BugID')";
                 
                 if(!empty($CommentCreated)AND !empty($UserID) AND !empty($BugID)) {
                     if (mysqli_query($conn, $UserInsert)) {
