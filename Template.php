@@ -29,7 +29,7 @@
         ?>
     </head>
     <body>
-        <div id ="header">Login<!--Bug header--></div>
+        <div id ="header"><!--Bug header--></div>
         <div id="navigation">
             <ul>
                 <p><strong>Links</strong></p>
@@ -56,9 +56,9 @@
                     echo "An error has occurred. This bug does not exist.";
                 }
                 if($Status = "NULL") {
-                    echo "Bug has not been solved";
+                    echo "<br>" . "Bug has not been solved";
                 }else{
-                    echo "Bug has been solved";
+                    echo "<br>" . "Bug has been solved";
                 }
                 
                 ?>
