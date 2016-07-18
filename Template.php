@@ -96,9 +96,9 @@
                 
                 if(!empty($CommentCreated)AND !empty($UserID) AND !empty($BugID)) {
                     if (mysqli_query($conn, $UserInsert)) {
-                        echo " Your comment has been created successfully .";
+                        echo "<br>" . "Your comment has been created successfully .";
                     } else {
-                        echo " ERROR: You must login to comment" . mysqli_error($conn);
+                        echo "<br>" . " ERROR: You must login to comment" . mysqli_error($conn);
                     }
                 }
                 mysqli_close($conn);
