@@ -55,7 +55,7 @@
 
 
             if (!empty($keywords) AND !empty($users)){
-                $SearchResult = "SELECT title, description, dateposted FROM Bugs, Keywords, Users WHERE Bugs.bug_ID = Keywords.bug_ID AND Bugs.bug_ID = Users.user_ID AND Keywords.key_description = $keywords AND Users.name = $users";
+                $SearchResult = "SELECT title, description, dateposted FROM Bugs, Keywords, Users WHERE Bugs.bug_ID = Keywords.bug_ID AND Bugs.bug_ID = Users.user_ID AND Keywords.key_description LIKE %$keywords% AND Users.name LIKE %$users%";
                 $result = mysqli_query($conn, $SearchResult) or die(mysqli_error());
 
                 if (mysqli_num_rows($result) > 0 ){
