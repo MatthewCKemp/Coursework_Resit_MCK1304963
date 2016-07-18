@@ -65,44 +65,46 @@
             </div>
         </div>
         <div id="comments">
-            <p><strong>Comments <!--RELEVANT COMMENTS--> </strong></p>
-            <?php
-            $CommentQuery = "SELECT com_content, name, bugposted FROM Comments, Users WHERE Comments.user_ID = Users.user_ID AND Comments.bug_ID = Bugs.bug_ID";
-            $CommentResult = mysqli_query($conn, $CommentQuery);
-
-            if (mysqli_num_rows($CommentResult) > 0 ){
-                while ($CommentRows = mysqli_fetch_assoc($CommentResult)) { //Outputs data in each row.
-                    echo "<br>" . $CommentRows["name"] . "<br>" . $CommentRows["com_content"] . "<br>";
-                }
-                echo"</table>";
-            } else {
-                echo "There are currently no comments on this bug";
-            }
-            ?>
-            
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                Remember to use '@' to indicate who you are replying to: <br>
-                Comment): <input type="text" name="Comment_New" required><br>
-                <input type="submit" value ="Post"/><br/>
-            </form>
-           
-            <?php
-            
-            $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
-            $CommentInsert = "INSERT INTO Comments (com_content, bug_ID, user_ID,) VALUES ('$CommentInsert','$UserID','$BugID')";
-            $UserID = mysqli_real_escape_string($conn,$_SESSION['login']);
-            $BugID = mysqli_real_escape_string($conn,$_SESSION['Bug']);
-            
-            if(!empty($CommentCreated)AND !empty($UserID) AND !empty($BugID)) {
-                if (mysqli_query($conn, $UserInsert)) {
-                    echo " Your comment has been created successfully .";
+            <div id="container">
+                <p><strong>Comments <!--RELEVANT COMMENTS--> </strong></p>
+                <?php
+                $CommentQuery = "SELECT com_content, name, bugposted FROM Comments, Users WHERE Comments.user_ID = Users.user_ID AND Comments.bug_ID = Bugs.bug_ID";
+                $CommentResult = mysqli_query($conn, $CommentQuery);
+    
+                if (mysqli_num_rows($CommentResult) > 0 ){
+                    while ($CommentRows = mysqli_fetch_assoc($CommentResult)) { //Outputs data in each row.
+                        echo "<br>" . $CommentRows["name"] . "<br>" . $CommentRows["com_content"] . "<br>";
+                    }
+                    echo"</table>";
                 } else {
-                    echo " ERROR: You must login to comment" . mysqli_error($conn);
+                    echo "There are currently no comments on this bug";
                 }
-            }
-            mysqli_close($conn);
-
-            ?>
+                ?>
+                
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    Remember to use '@' to indicate who you are replying to: <br>
+                    Comment): <input type="text" name="Comment_New" required><br>
+                    <input type="submit" value ="Post"/><br/>
+                </form>
+               
+                <?php
+                
+                $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
+                $CommentInsert = "INSERT INTO Comments (com_content, bug_ID, user_ID,) VALUES ('$CommentInsert','$UserID','$BugID')";
+                $UserID = mysqli_real_escape_string($conn,$_SESSION['login']);
+                $BugID = mysqli_real_escape_string($conn,$_SESSION['Bug']);
+                
+                if(!empty($CommentCreated)AND !empty($UserID) AND !empty($BugID)) {
+                    if (mysqli_query($conn, $UserInsert)) {
+                        echo " Your comment has been created successfully .";
+                    } else {
+                        echo " ERROR: You must login to comment" . mysqli_error($conn);
+                    }
+                }
+                mysqli_close($conn);
+    
+                ?>
+            </div>
         </div>
         <div id="footer">
             <p><strong>Legal stuff</strong></p>
