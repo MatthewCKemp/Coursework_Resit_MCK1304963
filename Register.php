@@ -49,7 +49,7 @@
                 $UserCountry = mysqli_real_escape_string($conn, $_POST["U_country"]);
                 $UserPassword = mysqli_real_escape_string($conn, $_POST["U_password"]);
                 
-                $UserInsert = "INSERT INTO Users (name, country, password) VALUES ('$UserName', '$UserCountry', '$UserPassword')";
+                $UserInsert = "INSERT INTO Users (name, country, password, developer) VALUES ('$UserName', '$UserCountry', '$UserPassword', 'YES')";
                 if(!empty($UserName)AND !empty($UserCountry) AND !empty($UserPassword)) {
                     if (mysqli_query($conn, $UserInsert)) {
                         echo " Your account has been created successfully .";
