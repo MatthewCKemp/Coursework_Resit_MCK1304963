@@ -91,15 +91,15 @@
                 
                 $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
                 $UserID = mysqli_real_escape_string($conn,$_SESSION['login']);
-                $BugID = 1; //mysqli_real_escape_string($conn,$_SESSION['Bug']);
+                $BugID = 10; //mysqli_real_escape_string($conn,$_SESSION['Bug']);
                 
-                $CommentInsert = "INSERT INTO Comments (com_content, bug_ID, user_ID,) VALUES ('$CommentInsert','$UserID','$BugID')";
+                $CommentInsert = "INSERT INTO Comments (com_content, bug_ID, user_ID,) VALUES ('$CommentCreated','$UserID','$BugID')";
                 
                 if(!empty($CommentCreated)AND !empty($UserID) AND !empty($BugID)) {
                     if (mysqli_query($conn, $CommentInsert)) {
                         echo "<br>" . "Your comment has been created successfully .";
                     } else {
-                        echo "<br>" . " ERROR: You must login to comment" . mysqli_error($conn);
+                        echo "<br>" . "ERROR: You must login to comment " . "<br>" . mysqli_error($conn);
                     }
                 }
                 mysqli_close($conn);
