@@ -102,13 +102,22 @@
                         echo "<br>" . "ERROR: You must login to comment " . "<br>" . mysqli_error($conn);
                     }
                 }
-                $NewestComment = "SELECT * FROM Comments WHERE user_ID = $UserID ORDER BY com_ID DESC, LIMIT 1";
-                mysqli_close($conn);
+                $NewestComment = "SELECT com_content FROM Comments WHERE user_ID = $UserID ORDER BY com_ID DESC, LIMIT 1";
                 ?>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <input type = "hidden" name="DeleteComment" value"">
                     <input type = "submit" name ="submit" value="Delete">
                 </form>
+                <?php
+                    if(isset($POST['DeleteComment'])){
+                        $DELETE = "DELETE FROM Comments WHERE com_content = $NewestComment";
+                        echo "<br>" . "Comment deleted. ";
+                    }else{
+                        echo "<br>" . "No comment to delete. ";
+                    }
+
+                mysqli_close($conn);
+                ?>
             </div>
         </div>
         <div id="footer">
