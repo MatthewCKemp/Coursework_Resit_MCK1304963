@@ -47,8 +47,8 @@
 
                             $name = mysqli_real_escape_string($conn, $_POST['username']);
                             $Pass = mysqli_real_escape_string($conn, $_POST['password']);
-                            
-                            $Search = "SELECT user_ID FROM Users WHERE name = '$name' AND password = '$Pass'";
+
+                            $Search = "SELECT user_ID, admin FROM Users WHERE name = '$name' AND password = '$Pass'";
                             $result = mysqli_query($conn, $Search);
                             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             $active = $row['active'];
@@ -59,11 +59,18 @@
                                 $_SESSION['login'] = $row["user_ID"];
                                 echo "Correct login ";
                                 echo $_SESSION['login'];
+
+                                if ($row["admin"] = "YES") {
+                                    $_SESSION['Level'] = "Admin";
+                                    echo $_SESSION['Level'];
+                                } else {
+                                    $_SESSION['Level'] = "Developer";
+                                    echo $_SESSION['Level']; //Establishes user's privilege level
+                                }
                             } else {
                                 echo "Incorrect login, please retry";
                             }
                         }
-                        
                         mysqli_close($conn);
                         ?>
                 </div>
