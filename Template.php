@@ -93,7 +93,7 @@
                 $UserID = mysqli_real_escape_string($conn,$_SESSION['login']);
                 $BugID = 10; //mysqli_real_escape_string($conn,$_SESSION['Bug']);
                 
-                $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ('$CommentCreated','$UserID','$BugID')";
+                $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ('$CommentCreated', '$UserID', '$BugID')";
                 
                 if(!empty($CommentCreated)AND !empty($UserID) AND !empty($BugID)) {
                     if (mysqli_query($conn, $CommentInsert)) {
@@ -102,9 +102,13 @@
                         echo "<br>" . "ERROR: You must login to comment " . "<br>" . mysqli_error($conn);
                     }
                 }
+                $NewestComment = "SELECT * FROM Comments WHERE user_ID = $UserID ORDER BY com_ID DESC, LIMIT 1";
                 mysqli_close($conn);
-    
                 ?>
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    <input type = "hidden" name="DeleteComment" value"">
+                    <input type = "submit" name ="submit" value="Delete">
+                </form>
             </div>
         </div>
         <div id="footer">
