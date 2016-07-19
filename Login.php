@@ -59,16 +59,15 @@
                                 $_SESSION['login'] = $row["user_ID"];
                                 echo "Correct login ";
                                 echo $_SESSION['login'];
-
-                                if ($row["admin"] = "YES") {
-                                    $_SESSION['Level'] = "Admin";
-                                    echo "<br>" . $_SESSION['Level'];
-                                } else if($row["developer"] = "YES") {
-                                    $_SESSION['Level'] = "Developer";
-                                    echo "<br>" . $_SESSION['Level']; //Establishes user's privilege level
-                                }
                             } else {
                                 echo "Incorrect login, please retry";
+                            }
+                            if ($row["admin"] = "YES") {
+                                $_SESSION['Level'] = "Admin";
+                                echo "<br>" . $_SESSION['Level'];
+                            } else if($row["admin"] = "NULL") {
+                                $_SESSION['Level'] = "Developer";
+                                echo "<br>" . $_SESSION['Level']; //Establishes user's privilege level
                             }
                         }
                         mysqli_close($conn);
