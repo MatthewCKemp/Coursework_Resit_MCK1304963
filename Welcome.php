@@ -39,7 +39,7 @@
                         //echo " DB Selected successfully";
 
                         //SQL query
-                        $query = "SELECT TOP 5 bug_ID, title, bugposted FROM Bugs ORDER BY bug_ID DESC";
+                        $query = "SELECT bug_ID, title, bugposted FROM Bugs ORDER BY bug_ID DESC";
                         $result = mysqli_query($conn, $query);
                         
                         if (mysqli_num_rows($result) > 0 ){
