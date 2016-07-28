@@ -47,17 +47,17 @@
             $Dev = mysqli_real_escape_string($conn, $_POST['Developer']);
             $Key = mysqli_real_escape_string($conn, $_POST['Keyword']);
 
-            $Search = "SELECT title, bugposted, name FROM Bugs, Users WHERE Bugs.bug_ID LIKE Users.bug_ID AND Users.name LIKE '%".$Dev."%' OR Bugs.description LIKE '%".$Key."%'";
+            $Search = "SELECT Bugs.title, Bugs.bugposted, Users.name FROM Bugs, Users WHERE Bugs.bug_ID LIKE Users.bug_ID AND Users.name LIKE '%".$Dev."%' OR Bugs.description LIKE '%".$Key."%'";
             $result = mysqli_query($conn, $Search);
 
             if (mysqli_num_rows($result) > 0 ){
                 echo "<table><tr><th>Bug Name</th><th>Date Posted</th><th>Developer</th></tr>";
                 while ($rows = mysqli_fetch_assoc($result)) { //Outputs data in each row.
-                    echo "<tr><td>" . $rows["title"] . "</td><td>" . $rows["bugposted"] . "<tr><td>" . $rows["name"] . "</tr></td>";
+                    echo "<tr><td>" . $rows["Bugs.title"] . "</td><td>" . $rows["Bugs.bugposted"] . "<tr><td>" . $rows["Users.name"] . "</tr></td>";
                 }
                 echo"</table>";
             } else {
-                echo "no results found";
+                echo "no results found. " . mysqli_error($conn);
             }
         }
 
