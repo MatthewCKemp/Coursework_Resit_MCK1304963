@@ -18,7 +18,12 @@
 </div>
 <div id="content">
     <div id="container">
-            <?php
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <label>Developer: </label><input type="text" name="Developer"/><br><br/>
+            <label>Keyword: </label><input type="text" name="Keyword"/><br><br/>
+            <input type="submit" value ="Search"/><br/>
+        </form>    
+        <?php
             session_start();
             $username = "b56f549a76a983";
             $password = "a3035583";
@@ -37,7 +42,27 @@
             }
             //echo " DB Selected successfully";
 
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
 
+            $Dev = mysqli_real_escape_string($conn, $_POST['Developer']);
+            $Key = mysqli_real_escape_string($conn, $_POST['Keyword']);
+
+            $Search = "SELECT title, bugposted, name FROM Bugs, Users WHERE Bugs.bug_ID LIKE Users.bug_ID AND Users.name LIKE '%".$Dev."%' OR Bugs.description LIKE '%".$Key."%'";
+            $result = mysqli_query($conn, $Search);
+
+            if (mysqli_num_rows($result) > 0 ){
+                echo "<table><tr><th>Bug Name</th><th>Date Posted</th><th>Developer</th></tr>";
+                while ($rows = mysqli_fetch_assoc($result)) { //Outputs data in each row.
+                    echo "<tr><td>" . $rows["title"] . "</td><td>" . $rows["bugposted"] . "<tr><td>" . $rows["name"] . "</tr></td>";
+                }
+                echo"</table>";
+            } else {
+                echo "no results found";
+            }
+        }
+
+            /* MULTIPLE DROP-DOWN-BOX ALTERNATIVE CODE. (CURRENTLY NOT WORKING)
+            
             $keywords = "SELECT key_description FROM Keywords";
             $users = "SELECT name FROM Users";
 
@@ -67,10 +92,10 @@
                 } else {
                     echo "no results found";
                 }
-            
             }
-            mysqli_close($conn);
-            ?>
+            */
+        mysqli_close($conn);
+        ?>
     </div>
 </div>
 <div id="footer">
