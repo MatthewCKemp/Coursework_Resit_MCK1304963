@@ -47,7 +47,7 @@
             $Dev = mysqli_real_escape_string($conn, $_POST['Developer']);
             $Key = mysqli_real_escape_string($conn, $_POST['Keyword']);
 
-            $Search = "SELECT Bugs.title, Bugs.bugposted, Users.name FROM Bugs, Users WHERE Users.user_ID LIKE Bugs.user_ID AND Users.name LIKE '$Dev' AND Bugs.description LIKE '%".$Key."%'";
+            $Search = "SELECT Bugs.title, Bugs.bugposted, Users.name FROM Bugs, Users WHERE Users.user_ID LIKE Bugs.user_ID AND Users.name LIKE '$Dev' AND Bugs.title LIKE '%". $Key ."%'";
             $result = mysqli_query($conn, $Search);
 
             if (mysqli_num_rows($result) > 0 ){
