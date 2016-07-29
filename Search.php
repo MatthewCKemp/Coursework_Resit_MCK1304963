@@ -53,7 +53,7 @@
             if (mysqli_num_rows($result) > 0 ){
                 echo "<table><tr><th>Bug Name</th><th>Date Posted</th><th>Developer</th></tr>";
                 while ($rows = mysqli_fetch_assoc($result)) { //Outputs data in each row.
-                    echo "<tr><td><a href=template.php?bugID='$rows[bug_ID]'>" . $rows["title"] . "</a></td><td>" . $rows["bugposted"] . "</td><td><a href=UserTemplate.php?userID='$rows[Dev_ID]'>" . $rows["name"] . "</a></tr></td>";
+                    echo "<tr><td><a href=template.php?bugID='$rows[bug_ID]'>" . $rows["title"] . "</a></td><td>" . $rows["bugposted"] . "</td><td><a href=UserTemplate.php?devID='$rows[DevID]'>" . $rows["name"] . "</a></tr></td>";
                 }
                 echo"</table>";
             } else {
