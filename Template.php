@@ -49,13 +49,12 @@
                 if (mysqli_num_rows($BugResult) > 0 ){
                     while ($BugRows = mysqli_fetch_assoc($BugResult)) { 
                         echo "<br>" . $BugRows["title"] . "<br>" . $BugRows["description"] . "<br>" . $BugRows["bugposted"] . "<br>" . $BugRows["bugfixed"]. "<br>" . $BugRows["name"]. "<br>" . $BugRows["country"];
-                        $Status = $BugRows["status"];
                     }
                     echo"</table>";
                 } else {
                     echo "An error has occurred. This bug does not exist." . mysqli_error($conn);
                 }
-                if($Status = "NULL") {
+                if($BugRows["status"] = "NULL") {
                     echo "<br>" . "Bug has not been solved";
                 }else{
                     echo "<br>" . "Bug has been solved";
