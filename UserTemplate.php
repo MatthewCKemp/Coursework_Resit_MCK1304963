@@ -45,7 +45,7 @@
         <?php
         $devID = $_GET["bugID"];
         echo $devID;
-        $UserQuery = "SELECT Bugs.title, Bugs.bugposted, Users.name, Users.country FROM Bugs, Users WHERE Users.user_ID LIKE Bugs.user_ID AND Users.user_ID LIKE $devID ";
+        $UserQuery = "SELECT Bugs.title, Bugs.bugposted, Users.name, Users.country FROM Bugs, Users WHERE Users.user_ID LIKE Bugs.user_ID AND Users.user_ID LIKE $devID";
         $UserResult = mysqli_query($conn, $UserQuery);
 
         if (mysqli_num_rows($UserResult) > 0 ){
