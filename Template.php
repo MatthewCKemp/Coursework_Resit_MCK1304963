@@ -43,7 +43,7 @@
                 <!--Bug info + creator and location-->
                 <?php
                 $bugID = $_GET["bugID"];
-                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Bugs.status, Users.name, Users.country FROM Bugs, Users WHERE Bugs.user_ID LIKE Users.user_ID AND Bugs.bug_ID LIKE $bugID ";
+                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Users.name, Users.country FROM Bugs, Users WHERE Bugs.user_ID LIKE Users.user_ID AND Bugs.bug_ID LIKE $bugID ";
                 $BugResult = mysqli_query($conn, $BugQuery);
 
                 if (mysqli_num_rows($BugResult) > 0 ){
@@ -54,7 +54,7 @@
                 } else {
                     echo "An error has occurred. This bug does not exist." . mysqli_error($conn);
                 }
-                if($BugRows["status"] = "NULL") {
+                if(empty($BugRows["bugfixed"])) {
                     echo "<br>" . "Bug has not been solved";
                 }else{
                     echo "<br>" . "Bug has been solved";
