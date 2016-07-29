@@ -28,7 +28,7 @@
     ?>
 </head>
 <body>
-<div id ="header"><?php echo "User" . $NameResult?></div>
+<div id ="header"><?php echo "User" . $_GET["name"]?></div>
 <div id="navigation">
     <ul>
         <p><strong>Links</strong></p>
