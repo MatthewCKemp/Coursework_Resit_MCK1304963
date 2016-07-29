@@ -44,23 +44,17 @@
         <!--Bug info + creator and location-->
         <?php
         $devID = $_GET["bugID"];
-        echo $bugID;
-        $BugQuery = "SELECT Bugs.title, Bugs.bugposted, Users.name, Users.country FROM Bugs, Users WHERE Users.user_ID LIKE Bugs.user_ID AND Users.user_ID LIKE $DevID ";
-        $BugResult = mysqli_query($conn, $BugQuery);
+        echo $devID;
+        $UserQuery = "SELECT Bugs.title, Bugs.bugposted, Users.name, Users.country FROM Bugs, Users WHERE Users.user_ID LIKE Bugs.user_ID AND Users.user_ID LIKE $devID ";
+        $UserResult = mysqli_query($conn, $UserQuery);
 
-        if (mysqli_num_rows($BugResult) > 0 ){
-            while ($BugRows = mysqli_fetch_assoc($BugResult)) {
-                echo "<br>" . $BugRows["title"] . "<br>" . $BugRows["description"] . "<br>" . $BugRows["bugposted"] . "<br>" . $BugRows["bugfixed"]. "<br>" . $BugRows["name"]. "<br>" . $BugRows["country"];
-                $Status = "Bugs.status";
+        if (mysqli_num_rows($UserResult) > 0 ){
+            while ($UserRows = mysqli_fetch_assoc($UserResult)) {
+                echo "<br>" . $UserRows["name"] . "<br>" . $UserRows["country"] . "<br>" . $UserRows["title"] . "<br>" . $UserRows["bugposted"];
             }
             echo"</table>";
         } else {
             echo "An error has occurred. This bug does not exist." . mysqli_error($conn);
-        }
-        if($Status = "NULL") {
-            echo "<br>" . "Bug has not been solved";
-        }else{
-            echo "<br>" . "Bug has been solved";
         }
         mysqli_close($conn);
         ?>
