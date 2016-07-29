@@ -26,11 +26,12 @@
 
     //Query based on user selection pulls all required data
     $devID = $_GET["devID"];
-    $UserName = "SELECT name FROM users WHERE user_ID LIKE devID"
+    $UserName = "SELECT name FROM users WHERE user_ID LIKE devID";
+    $NameResult = mysqli_query($conn, $UserName);
     ?>
 </head>
 <body>
-<div id ="header"><?php echo "User" . $UserName?></div>
+<div id ="header"><?php echo "User" . $NameResult?></div>
 <div id="navigation">
     <ul>
         <p><strong>Links</strong></p>
