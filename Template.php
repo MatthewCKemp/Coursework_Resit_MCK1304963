@@ -43,9 +43,9 @@
             <div id="container">
                 <!--Bug info + creator and location-->
                 <?php
-                $_GET["bugID"];
+                $bugID = $_GET["bugID"];
                 echo $bugID;
-                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Bugs.status, Users.name, Users.country FROM Bugs, Users WHERE Users.user_ID LIKE Bugs.user_ID AND Bugs.bug_ID LIKE '$bugID' ";
+                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Bugs.status, Users.name, Users.country FROM Bugs, Users WHERE Bugs.user_ID LIKE User.user_ID AND Bugs.bug_ID LIKE '$bugID' ";
                 $BugResult = mysqli_query($conn, $BugQuery);
 
                 if (mysqli_num_rows($BugResult) > 0 ){
@@ -79,7 +79,7 @@
                     }
                     echo"</table>";
                 } else {
-                    echo "There are currently no comments on this bug";
+                    echo "There are currently no comments on this bug" . mysqli_error($conn);
                 }
                 ?>
                 
@@ -104,7 +104,7 @@
                         echo "<br>" . "ERROR: You must login to comment " . "<br>" . mysqli_error($conn);
                     }
                 }
-                $NewestComment = "SELECT com_content FROM Comments WHERE user_ID = $UserID ORDER BY com_ID DESC, LIMIT 1";
+                $NewestComment = "SELECT com_ID FROM Comments WHERE user_ID = $UserID ORDER BY com_ID DESC, LIMIT 1";
                 ?>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <input type = "hidden" name="DeleteComment" value"">
@@ -112,10 +112,10 @@
                 </form>
                 <?php
                     if(isset($POST['DeleteComment'])){
-                        $DELETE = "DELETE FROM Comments WHERE com_content = $NewestComment";
+                        $DELETE = "DELETE FROM Comments WHERE com_ID = $NewestComment";
                         echo "<br>" . "Comment deleted. ";
                     }else{
-                        echo "<br>" . "No comment to delete. ";
+                        echo "<br>" . "No comment to delete. " . mysqli_error($conn);
                     }
 
                 mysqli_close($conn);
