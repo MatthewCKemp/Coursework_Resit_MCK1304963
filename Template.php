@@ -28,7 +28,7 @@
         ?>
     </head>
     <body>
-        <div id ="header"><?php echo $BugResult ?></div>
+        <div id ="header"><?php echo $_GET["title"] ?></div>
         <div id="navigation">
             <ul>
                 <p><strong>Links</strong></p>
