@@ -43,7 +43,7 @@
         <!--Bug info + creator and location-->
         <?php
         $devID = $_GET["devID"];
-        $UserQuery = "SELECT Users.name, Users.country, Bugs.title, Bugs.bugposted FROM Users, Bugs WHERE Users.user_ID LIKE Bugs.user_ID AND Users.user_ID LIKE '$devID' ";
+        $UserQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Bugs.status, Users.name, Users.country FROM Bugs, Users WHERE Bugs.user_ID LIKE Users.user_ID AND Bugs.bug_ID LIKE $devID ";
         $UserResult = mysqli_query($conn, $UserQuery);
         
         if (mysqli_num_rows($UserResult) > 0 ){
