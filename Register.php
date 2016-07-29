@@ -54,7 +54,7 @@
                     if (mysqli_query($conn, $UserInsert)) {
                         echo " Your account has been created successfully .";
                     } else {
-                        echo " ERROR: Unable to create account" . mysqli_error($conn);
+                        echo " ERROR: Unable to create account " . mysqli_error($conn);
                     }
                 }
                 mysqli_close($conn);
