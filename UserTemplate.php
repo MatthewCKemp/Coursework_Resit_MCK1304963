@@ -25,9 +25,6 @@
     session_start();
 
     //Query based on user selection pulls all required data
-    $devID = $_GET["devID"];
-    $UserName = "SELECT name FROM users WHERE user_ID LIKE devID";
-    $NameResult = mysqli_query($conn, $UserName);
     ?>
 </head>
 <body>
@@ -45,6 +42,7 @@
     <div id="container">
         <!--Bug info + creator and location-->
         <?php
+        $devID = $_GET["devID"];
         $UserQuery = "SELECT Users.name, Users.country, Bugs.title, Bugs.bugposted FROM Users, Bugs WHERE Bugs.user_ID LIKE Users.user_ID AND Users.user_ID LIKE $devID ";
         $UserResult = mysqli_query($conn, $UserQuery);
         
