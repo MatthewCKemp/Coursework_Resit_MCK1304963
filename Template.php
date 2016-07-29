@@ -25,11 +25,13 @@
         session_start();
 
         //Query based on user selection pulls all required data
-
+        $bugID = $_GET["bugID"];
+        $BugName = "SELECT title FROM Bugs WHERE bug_ID LIKE bugID";
+        $BugResult = mysqli_query($conn, $BugName);
         ?>
     </head>
     <body>
-        <div id ="header"><!--Bug header--></div>
+        <div id ="header"><?php echo $BugResult ?></div>
         <div id="navigation">
             <ul>
                 <p><strong>Links</strong></p>
@@ -43,8 +45,7 @@
             <div id="container">
                 <!--Bug info + creator and location-->
                 <?php
-                $bugID = $_GET["bugID"];
-                echo $bugID;
+
                 $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Bugs.status, Users.name, Users.country FROM Bugs, Users WHERE Bugs.user_ID LIKE Users.user_ID AND Bugs.bug_ID LIKE $bugID ";
                 $BugResult = mysqli_query($conn, $BugQuery);
 
