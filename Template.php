@@ -45,7 +45,7 @@
                 <?php
                 $bugID = $_GET["bugID"];
                 echo $bugID;
-                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Bugs.status, Users.name, Users.country FROM Bugs, Users WHERE Bugs.user_ID LIKE User.user_ID AND Bugs.bug_ID LIKE '$bugID' ";
+                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Bugs.status, Users.name, Users.country FROM Bugs, Users WHERE Bugs.user_ID LIKE Users.user_ID AND Bugs.bug_ID LIKE '$bugID' ";
                 $BugResult = mysqli_query($conn, $BugQuery);
 
                 if (mysqli_num_rows($BugResult) > 0 ){
@@ -93,7 +93,6 @@
                 
                 $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
                 $UserID = mysqli_real_escape_string($conn,$_SESSION['login']);
-                $BugID = 10; //mysqli_real_escape_string($conn,$_SESSION['Bug']);
                 
                 $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ('$CommentCreated', '$UserID', '$BugID')";
                 
