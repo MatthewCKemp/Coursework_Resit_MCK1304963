@@ -25,11 +25,12 @@
     session_start();
 
     //Query based on user selection pulls all required data
-
+    $devID = $_GET["devID"];
+    $UserName = "SELECT name FROM users WHERE user_ID LIKE devID"
     ?>
 </head>
 <body>
-<div id ="header"><!--Bug header--></div>
+<div id ="header"><?php echo "User" . $UserName?></div>
 <div id="navigation">
     <ul>
         <p><strong>Links</strong></p>
@@ -43,11 +44,9 @@
     <div id="container">
         <!--Bug info + creator and location-->
         <?php
-        $devID = $_GET["devID"];
-        echo $devID;
         $UserQuery = "SELECT Users.name, Users.country, Bugs.title, Bugs.bugposted FROM Users, Bugs WHERE Bugs.user_ID LIKE Users.user_ID AND Users.user_ID LIKE $devID ";
         $UserResult = mysqli_query($conn, $UserQuery);
-
+        
         if (mysqli_num_rows($UserResult) > 0 ){
             while ($UserRows = mysqli_fetch_assoc($UserResult)) {
                 echo "<br>" . $UserRows["name"] . "<br>" . $UserRows["country"] . "<br>" . $UserRows["title"] . "<br>" . $UserRows["bugposted"];
