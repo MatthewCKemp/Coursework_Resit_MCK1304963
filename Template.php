@@ -54,7 +54,7 @@
                     }
                     echo"</table>";
                 } else {
-                    echo "An error has occurred. This bug does not exist.";
+                    echo "An error has occurred. This bug does not exist." . mysqli_error($conn);
                 }
                 if($Status = "NULL") {
                     echo "<br>" . "Bug has not been solved";
