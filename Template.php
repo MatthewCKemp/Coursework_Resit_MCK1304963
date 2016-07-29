@@ -43,12 +43,13 @@
             <div id="container">
                 <!--Bug info + creator and location-->
                 <?php
-                $BugQuery = "SELECT title, description, bugposted, bugfixed, status, name, country FROM Bugs, Users WHERE Users.bug_ID = Bugs.bug_ID";
+                $_GET["bugID"];
+                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Bugs.status, Users.name, Users.country FROM Bugs, Users WHERE Users.bug_ID = Bugs.bug_ID AND Bugs.bug_ID = '$bugID' ";
                 $BugResult = mysqli_query($conn, $BugQuery);
 
                 if (mysqli_num_rows($BugResult) > 0 ){
                     while ($BugRows = mysqli_fetch_assoc($BugResult)) { 
-                        echo "<br>" . $BugRows["title"] . "<br>" . $BugRows["description"] . "<br>" . $Bugrows["bugposted"] . "<br>" . $Bugrows["bugfixed"]. "<br>" . $Bugrows["name"]. "<br>" . $Bugrows["country"];
+                        echo "<br>" . $BugRows["title"] . "<br>" . $BugRows["description"] . "<br>" . $BugRows["bugposted"] . "<br>" . $BugRows["bugfixed"]. "<br>" . $BugRows["name"]. "<br>" . $BugRows["country"];
                         $Status = "Bugs.status";
                     }
                     echo"</table>";
@@ -68,7 +69,7 @@
             <div id="container">
                 <p><strong>Comments <!--RELEVANT COMMENTS--> </strong></p>
                 <?php
-                $CommentQuery = "SELECT com_content, name, bugposted FROM Comments, Users WHERE Comments.user_ID = Users.user_ID AND Comments.bug_ID = Bugs.bug_ID";
+                $CommentQuery = "SELECT Comments.com_content, Users.name FROM Comments, Users WHERE Comments.user_ID = Users.user_ID AND Comments.bug_ID = Bugs.bug_ID AND Bugs.bug_ID = '$bugID'";
                 $CommentResult = mysqli_query($conn, $CommentQuery);
     
                 if (mysqli_num_rows($CommentResult) > 0 ){
