@@ -49,7 +49,7 @@
                 if (mysqli_num_rows($BugResult) > 0 ){
                     while ($BugRows = mysqli_fetch_assoc($BugResult)) { 
                         echo "<br>" . $BugRows["title"] . "<br>" . $BugRows["description"] . "<br>" . $BugRows["bugposted"] . "<br>" . $BugRows["bugfixed"]. "<br>" . $BugRows["name"]. "<br>" . $BugRows["country"];
-                        if(empty($BugRows["bugfixed"])) {
+                        if(!empty($BugRows["bugfixed"])) {
                             echo "<br>" . "Bug has not been solved";
                         }else{
                             echo "<br>" . "Bug has been solved";
