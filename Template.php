@@ -44,7 +44,7 @@
                 <!--Bug info + creator and location-->
                 <?php
                 $_GET["bugID"];
-                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Bugs.status, Users.name, Users.country FROM Bugs, Users WHERE Users.bug_ID = Bugs.bug_ID AND Bugs.bug_ID = '$bugID' ";
+                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Bugs.status, Users.name, Users.country FROM Bugs, Users WHERE Bugs.user_ID = Bugs.bug_ID AND Bugs.bug_ID = '$bugID' ";
                 $BugResult = mysqli_query($conn, $BugQuery);
 
                 if (mysqli_num_rows($BugResult) > 0 ){
