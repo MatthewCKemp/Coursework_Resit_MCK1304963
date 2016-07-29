@@ -45,7 +45,7 @@
                 <?php
                 $bugID = $_GET["bugID"];
                 echo $bugID;
-                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Bugs.status, Users.name, Users.country FROM Bugs, Users WHERE Bugs.user_ID LIKE Users.user_ID AND Bugs.bug_ID LIKE '$bugID' ";
+                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Bugs.status, Users.name, Users.country FROM Bugs, Users WHERE Bugs.user_ID LIKE Users.user_ID AND Bugs.bug_ID LIKE $bugID ";
                 $BugResult = mysqli_query($conn, $BugQuery);
 
                 if (mysqli_num_rows($BugResult) > 0 ){
@@ -70,7 +70,7 @@
             <div id="container">
                 <p><strong>Comments <!--RELEVANT COMMENTS--> </strong></p>
                 <?php
-                $CommentQuery = "SELECT Comments.com_content, Users.name FROM Comments, Users, Bugs WHERE Comments.user_ID LIKE Users.user_ID AND Comments.bug_ID LIKE Bugs.bug_ID AND Bugs.bug_ID LIKE '$bugID'";
+                $CommentQuery = "SELECT Comments.com_content, Users.name FROM Comments, Users, Bugs WHERE Comments.user_ID LIKE Users.user_ID AND Comments.bug_ID LIKE Bugs.bug_ID AND Bugs.bug_ID LIKE $bugID";
                 $CommentResult = mysqli_query($conn, $CommentQuery);
     
                 if (mysqli_num_rows($CommentResult) > 0 ){
