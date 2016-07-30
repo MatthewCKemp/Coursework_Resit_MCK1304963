@@ -56,9 +56,9 @@
             echo "An error has occurred. This user does not exist." . mysqli_error($conn);
         }
         if (mysqli_num_rows($ContentResult) > 0 ){
-            echo "<strong>Developer's contributions: </strong><br>";
+            echo "<br><br><strong>Developer's contributions: </strong>";
             while ($ContentRows = mysqli_fetch_assoc($ContentResult)) {
-                echo "<br>" . $ContentRows["title"] . "<br>" . $ContentRows["bugposted"];
+                echo "<br>" . $ContentRows["title"] . $ContentRows["bugposted"];
             }
             echo"</table>";
         } else {
