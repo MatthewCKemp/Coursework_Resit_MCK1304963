@@ -48,8 +48,8 @@
 
                 if (mysqli_num_rows($BugResult) > 0 ){
                     while ($BugRows = mysqli_fetch_assoc($BugResult)) { 
-                        echo "<br>" . $BugRows["title"] . "<br>" . $BugRows["description"] . "<br>" . $BugRows["bugposted"] . "<br>" . $BugRows["bugfixed"]. "<br>" . $BugRows["name"]. "<br>" . $BugRows["country"];
-                        if(!empty($BugRows["bugfixed"])) {
+                        echo "<br>" . "Title: " . $BugRows["title"] .  "<br>" . "Description: " . $BugRows["description"] . "<br>" . "Date posted: " . $BugRows["bugposted"] . "<br>" . "Date solved: " . $BugRows["bugfixed"]. "<br>" . "Developer's name:" . $BugRows["name"];
+                        if(empty($BugRows["bugfixed"])) {
                             echo "<br>" . "Bug has not been solved";
                         }else{
                             echo "<br>" . "Bug has been solved";
@@ -81,7 +81,7 @@
                 
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     Remember to use '@' to indicate who you are replying to: <br>
-                    Comment): <input type="text" name="Comment_New" required><br>
+                    Comment: <input type="text" name="Comment_New" required><br>
                     <input type="submit" value ="Post"/><br/>
                 </form>
                
