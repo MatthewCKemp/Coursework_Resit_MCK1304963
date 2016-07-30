@@ -43,12 +43,12 @@
                 <!--Bug info + creator and location-->
                 <?php
                 $bugID = $_GET["bugID"];
-                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Users.name, Users.country Users.user.ID FROM Bugs, Users WHERE Bugs.user_ID LIKE Users.user_ID AND Bugs.bug_ID LIKE $bugID ";
+                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Users.name, Users.country FROM Bugs, Users WHERE Bugs.user_ID LIKE Users.user_ID AND Bugs.bug_ID LIKE $bugID ";
                 $BugResult = mysqli_query($conn, $BugQuery);
 
                 if (mysqli_num_rows($BugResult) > 0 ){
                     while ($BugRows = mysqli_fetch_assoc($BugResult)) { 
-                        echo "<br>" . "<strong>Title</strong>: " . $BugRows["title"] .  "<br>" . "<strong>Description:</strong> " . $BugRows["description"] . "<br>" . "<strong>Date posted:</strong> " . $BugRows["bugposted"] . "<br>" . "<strong>Date solved:</strong> " . $BugRows["bugfixed"]. "<br>" . "<strong>Developer's name: </strong>" . "<a href=UserTemplate.php?devID=$rows[user_ID]>" . $BugRows["name"];
+                        echo "<br>" . "<strong>Title</strong>: " . $BugRows["title"] .  "<br>" . "<strong>Description:</strong> " . $BugRows["description"] . "<br>" . "<strong>Date posted:</strong> " . $BugRows["bugposted"] . "<br>" . "<strong>Date solved:</strong> " . $BugRows["bugfixed"]. "<br>" . "<strong>Developer's name: </strong>" . $BugRows["name"];
                         if(empty($BugRows["bugfixed"])) {
                             echo "<br>" . "Bug has not been solved";
                         }else{
