@@ -42,16 +42,26 @@
     <div id="container">
         <?php
         $devID = $_GET["devID"];
-        $UserQuery = "SELECT Users.name, Users.country, Bugs.title, Bugs.bugposted FROM Users, Bugs WHERE Users.user_ID LIKE Bugs.user_ID AND Users.user_ID LIKE $devID ";
+        $UserQuery = "SELECT Users.name, Users.country FROM Users, Bugs WHERE Users.user_ID LIKE Bugs.user_ID AND Users.user_ID LIKE $devID ";
+        $ContentQuery = "SELECT Bugs.title, Bugs.bugposted FROM Users, Bugs WHERE Users.user_ID LIKE Bugs.user_ID AND Users.user_ID LIKE $devID ";
         $UserResult = mysqli_query($conn, $UserQuery);
+        $ContentResult = mysqli_query($conn, $ContentQuery);
         
         if (mysqli_num_rows($UserResult) > 0 ){
             while ($UserRows = mysqli_fetch_assoc($UserResult)) {
-                echo "<br>" . $UserRows["name"] . "<br>" . $UserRows["country"] . "<br>" . $UserRows["title"] . "<br>" . $UserRows["bugposted"];
+                echo "<br>" . "<strong>Developer's name: </strong>" . $UserRows["name"] . "<br>" ."<strong>Home country: </strong>" . $UserRows["country"];
             }
             echo"</table>";
         } else {
             echo "An error has occurred. This user does not exist." . mysqli_error($conn);
+        }
+        if (mysqli_num_rows($ContentResult) > 0 ){
+            while ($ContentRows = mysqli_fetch_assoc($ContentResult)) {
+                echo "<br>" . " <strong>Developer's contributions: </strong><br>" . $ContentRows["title"] . "<br>" . $ContentRows["bugposted"];
+            }
+            echo"</table>";
+        } else {
+            echo "An error has occurred. This user does not have any contributions." . mysqli_error($conn);
         }
         mysqli_close($conn);
         ?>
