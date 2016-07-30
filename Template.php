@@ -48,7 +48,7 @@
 
                 if (mysqli_num_rows($BugResult) > 0 ){
                     while ($BugRows = mysqli_fetch_assoc($BugResult)) { 
-                        echo "<br>" . "Title: " . $BugRows["title"] .  "<br>" . "Description: " . $BugRows["description"] . "<br>" . "Date posted: " . $BugRows["bugposted"] . "<br>" . "Date solved: " . $BugRows["bugfixed"]. "<br>" . "Developer's name:" . $BugRows["name"];
+                        echo "<br>" . "<strong>Title</strong>: " . $BugRows["title"] .  "<br>" . "<strong>Description:</strong> " . $BugRows["description"] . "<br>" . "<strong>Date posted:</strong> " . $BugRows["bugposted"] . "<br>" . "<strong>Date solved:</strong> " . $BugRows["bugfixed"]. "<br>" . "<strong>Developer's name: </strong>" . $BugRows["name"];
                         if(empty($BugRows["bugfixed"])) {
                             echo "<br>" . "Bug has not been solved";
                         }else{
