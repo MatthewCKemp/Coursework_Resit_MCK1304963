@@ -58,7 +58,7 @@
         if (mysqli_num_rows($ContentResult) > 0 ){
             echo "<br><br><strong>Developer's contributions: </strong>";
             while ($ContentRows = mysqli_fetch_assoc($ContentResult)) {
-                echo "<br>" . $ContentRows["title"] . $ContentRows["bugposted"];
+                echo "<br>" . $ContentRows["title"] . " " . $ContentRows["bugposted"];
             }
             echo"</table>";
         } else {
