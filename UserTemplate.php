@@ -42,7 +42,7 @@
     <div id="container">
         <?php
         $devID = $_GET["devID"];
-        $UserQuery = "SELECT Users.name, Users.country FROM Users, Bugs WHERE Users.user_ID LIKE Bugs.user_ID AND Users.user_ID LIKE $devID ";
+        $UserQuery = "SELECT name, country FROM Users WHERE Users.user_ID LIKE $devID ";
         $ContentQuery = "SELECT Bugs.title, Bugs.bugposted FROM Users, Bugs WHERE Users.user_ID LIKE Bugs.user_ID AND Users.user_ID LIKE $devID ";
         $UserResult = mysqli_query($conn, $UserQuery);
         $ContentResult = mysqli_query($conn, $ContentQuery);
@@ -56,8 +56,9 @@
             echo "An error has occurred. This user does not exist." . mysqli_error($conn);
         }
         if (mysqli_num_rows($ContentResult) > 0 ){
+            echo "<strong>Developer's contributions: </strong><br>";
             while ($ContentRows = mysqli_fetch_assoc($ContentResult)) {
-                echo "<br>" . " <strong>Developer's contributions: </strong><br>" . $ContentRows["title"] . "<br>" . $ContentRows["bugposted"];
+                echo "<br>" . $ContentRows["title"] . "<br>" . $ContentRows["bugposted"];
             }
             echo"</table>";
         } else {
@@ -69,11 +70,11 @@
 </div>
 <div id="comments">
     <div id="container">
-        <p><strong>Comments <!--RELEVANT COMMENTS--> </strong></p>
+        <p><strong></strong></p>
     </div>
 </div>
 <div id="footer">
-    <p><strong>Legal stuff</strong></p>
+    <p><strong>Website by Matthew.C.Kemp</strong></p>
 </div>
 </body>
 </html>
