@@ -59,7 +59,7 @@
 
                                 $_SESSION['login'] = $row["user_ID"];
                                 echo "Correct login ";
-                                if ($row['Verified'] == 'YES') {
+                                if ($row['verified'] == 'YES') {
                                     $_SESSION['priv'] = "Admin";
                                     $_SESSION['verification_check'] = $row['verified'];
                                 }else {
