@@ -43,31 +43,32 @@
                         <input type="submit" value ="Login"/><br/>
                     </form>
                     <?php
-                        if($_SERVER["REQUEST_METHOD"] == "POST") {
+                    session_start();
+                    if($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             $name = mysqli_real_escape_string($conn, $_POST['username']);
                             $Pass = mysqli_real_escape_string($conn, $_POST['password']);
 
-                            $Search = "SELECT user_ID, developer, admin FROM Users WHERE name = '$name' AND password = '$Pass'";
+                            $Search = "SELECT user_ID, Verified FROM Users WHERE name = '$name' AND password = '$Pass'";
                             $result = mysqli_query($conn, $Search);
                             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             $active = $row['active'];
                             $count = mysqli_num_rows($result);
 
                             if ($count == 1) {
-                                session_start();
+
                                 $_SESSION['login'] = $row["user_ID"];
                                 echo "Correct login ";
                                 echo $_SESSION['login'];
-                            } else {
+                                if ($row['Verified'] == '1') {
+                                    $_SESSION['priv'] = "Admin";
+                                    $_SESSION['verification_check'] = $row['verified'];
+                                }else {
+                                    $_SESSION['priv'] = "Developer";
+                                    echo 'To apply for admin privileges please contact an existing administrator';
+                                }
+                            }else{
                                 echo "Incorrect login, please retry";
-                            }
-                            if ($row["admin"] = "YES") {
-                                $_SESSION['Level'] = "Admin";
-                                echo "<br>" . $_SESSION['Level'];
-                            } else if($row["admin"] = "NULL") {
-                                $_SESSION['Level'] = "Developer";
-                                echo "<br>" . $_SESSION['Level']; //Establishes user's privilege level
                             }
                         }
                         mysqli_close($conn);
