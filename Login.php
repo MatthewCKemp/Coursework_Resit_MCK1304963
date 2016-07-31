@@ -58,10 +58,13 @@
                             if ($count == 1) {
 
                                 $_SESSION['login'] = $row["user_ID"];
-                                echo "Correct login ";
+                                echo "Correct login";
                                 if ($row['verified'] == 'YES') {
                                     $_SESSION['priv'] = "Admin";
                                     $_SESSION['verification_check'] = $row['verified'];
+                                    echo ", welcome administrator.";
+                                    echo $_SESSION['priv'];
+                                    echo $_SESSION['verification_check'];
                                 }else {
                                     $_SESSION['priv'] = "Developer";
                                     echo "<br>" . "To apply for admin priviliges please contact an existing administrator";
