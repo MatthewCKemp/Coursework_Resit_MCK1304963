@@ -49,7 +49,7 @@
                             $name = mysqli_real_escape_string($conn, $_POST['username']);
                             $Pass = mysqli_real_escape_string($conn, $_POST['password']);
 
-                            $Search = "SELECT user_ID, Verified FROM Users WHERE name = '$name' AND password = '$Pass'";
+                            $Search = "SELECT user_ID, admin, verified FROM Users WHERE name = '$name' AND password = '$Pass'";
                             $result = mysqli_query($conn, $Search);
                             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             $active = $row['active'];
@@ -59,13 +59,12 @@
 
                                 $_SESSION['login'] = $row["user_ID"];
                                 echo "Correct login ";
-                                echo $_SESSION['login'];
-                                if ($row['Verified'] == '1') {
+                                if ($row['Verified'] == 'YES') {
                                     $_SESSION['priv'] = "Admin";
                                     $_SESSION['verification_check'] = $row['verified'];
                                 }else {
                                     $_SESSION['priv'] = "Developer";
-                                    echo 'To apply for admin privileges please contact an existing administrator';
+                                    echo "<br>" . "To apply for admin priviliges please contact an existing administrator";
                                 }
                             }else{
                                 echo "Incorrect login, please retry";
