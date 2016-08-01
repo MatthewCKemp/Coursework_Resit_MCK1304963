@@ -62,7 +62,7 @@
                 ?>
             </div>
         </div>
-        <div id="comments">
+        <div id="Com-comments">
             <div id="Com-container">
                 <p><strong>Comments <!--RELEVANT COMMENTS--> </strong></p>
                 <?php
