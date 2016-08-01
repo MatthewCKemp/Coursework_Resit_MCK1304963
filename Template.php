@@ -80,7 +80,7 @@
                 ?>
                 
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                    Remember to use '@' to indicate who you are replying to: <br>
+                    Remember to use '@' to indicate who you are replying to:  <br>
                     Comment: <input type="text" name="Comment_New" required><br>
                     <input type="submit" value ="Post"/><br/>
                 </form>
