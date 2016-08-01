@@ -63,7 +63,7 @@
             </div>
         </div>
         <div id="comments">
-            <div id="container">
+            <div id="Com-container">
                 <p><strong>Comments <!--RELEVANT COMMENTS--> </strong></p>
                 <?php
                 $CommentQuery = "SELECT Comments.com_content, Users.name FROM Comments, Users, Bugs WHERE Comments.user_ID LIKE Users.user_ID AND Comments.bug_ID LIKE Bugs.bug_ID AND Bugs.bug_ID LIKE $bugID";
@@ -71,7 +71,7 @@
     
                 if (mysqli_num_rows($CommentResult) > 0 ){
                     while ($CommentRows = mysqli_fetch_assoc($CommentResult)) { //Outputs data in each row.
-                        echo "<br>" . $CommentRows["name"] . "<br>" . $CommentRows["com_content"] . "<br>";
+                        echo "<br>" . $CommentRows["name"] . $CommentRows["com_content"] . "<br>";
                     }
                     echo"</table>";
                 } else {
@@ -100,12 +100,10 @@
                         }
                     }
                 }
-                $NewestComment = "SELECT com_ID FROM Comments WHERE user_ID = $UserID ORDER BY com_ID DESC, LIMIT 1";
                 ?>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <input type = "hidden" name="DeleteComment">
                     <input type = "submit" name ="submit" value="Delete">
-                }
                 </form>
                 <?php
                     if(isset($POST['DeleteComment'])){
