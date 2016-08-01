@@ -15,4 +15,4 @@ div#content{text-align:left; position:absolute; top:160px; left:25px; right:175p
 table{border-spacing:5px; width:100%; border:1px solid black; font-size:20px}
 tr:hover {background-color: #F3F2ED}
 select{width:20%; padding:10px; font-size:16px }
-div#container{text-align:left; margin: auto; background: #ffffff; position:absolute;  top:25px; left:25px; right:25px; bottom:25px; padding:15px; font-size:12px}
+div#Com-container{text-align:left; margin: auto; background: #ffffff; position:absolute;  top:25px; left:25px; right:25px; bottom:25px; padding:15px; font-size:12px}
