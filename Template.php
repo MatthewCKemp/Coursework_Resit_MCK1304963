@@ -86,21 +86,22 @@
                 </form>
                
                 <?php
-                if(isset($POST['comment_New'])) {
-                    $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
-                    $UserID = mysqli_real_escape_string($conn, $_SESSION['login']);
-                    $bugID = $_GET["bugID"];
-                    
-                    $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ($CommentCreated, $UserID, $bugID)";
+                $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
+                $UserID = mysqli_real_escape_string($conn, $_SESSION['login']);
+                $bugID = $_GET["bugID"];
 
-                    if (!empty($CommentCreated) AND !empty($UserID) AND !empty($bugID)) {
-                        if (mysqli_query($conn, $CommentInsert)) {
-                            echo "<br>" . "Your comment has been created successfully .";
-                        } else {
-                            echo "<br>" . "ERROR: You must login to comment. " . "<br>" . mysqli_error($conn);
+                    if(isset($POST['Comment_New'])) {
+
+                    $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ('$CommentCreated', '$UserID', '$bugID')";
+
+                        if (!empty($CommentCreated) AND !empty($UserID) AND !empty($bugID)) {
+                            if (mysqli_query($conn, $CommentInsert)) {
+                                echo "<br>" . "Your comment has been created successfully. ";
+                            } else {
+                                echo "<br>" . "ERROR: You must login to comment. " . "<br>" . mysqli_error($conn);
+                            }
                         }
                     }
-                }
                 ?>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <input type = "hidden" name="DeleteComment">
