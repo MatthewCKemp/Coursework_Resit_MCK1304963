@@ -86,24 +86,26 @@
                 </form>
                
                 <?php
-                
-                $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
-                $UserID = mysqli_real_escape_string($conn,$_SESSION['login']);
-                
-                $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ($CommentCreated, $UserID, $bugID)";
-                
-                if(!empty($CommentCreated)AND !empty($UserID) AND !empty($bugID)) {
-                    if (mysqli_query($conn, $CommentInsert)) {
-                        echo "<br>" . "Your comment has been created successfully .";
-                    } else {
-                        echo "<br>" . "ERROR: You must login to comment " . "<br>" . mysqli_error($conn);
+                if(isset($POST['comment_New'])) {
+                    $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
+                    $UserID = mysqli_real_escape_string($conn, $_SESSION['login']);
+
+                    $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ($CommentCreated, $UserID, $bugID)";
+
+                    if (!empty($CommentCreated) AND !empty($UserID) AND !empty($bugID)) {
+                        if (mysqli_query($conn, $CommentInsert)) {
+                            echo "<br>" . "Your comment has been created successfully .";
+                        } else {
+                            echo "<br>" . "ERROR: You must login to comment " . "<br>" . mysqli_error($conn);
+                        }
                     }
                 }
                 $NewestComment = "SELECT com_ID FROM Comments WHERE user_ID = $UserID ORDER BY com_ID DESC, LIMIT 1";
                 ?>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                    <input type = "hidden" name="DeleteComment" value"">
+                    <input type = "hidden" name="DeleteComment">
                     <input type = "submit" name ="submit" value="Delete">
+                }
                 </form>
                 <?php
                     if(isset($POST['DeleteComment'])){
