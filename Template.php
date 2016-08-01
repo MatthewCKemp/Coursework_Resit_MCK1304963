@@ -62,9 +62,9 @@
                 ?>
             </div>
         </div>
-        <div id="Com-comments">
+        <div id="comments">
             <div id="Com-container">
-                <p><strong>Comments <!--RELEVANT COMMENTS--> </strong></p>
+                <p><strong>Comments</strong></p>
                 <?php
                 $CommentQuery = "SELECT Comments.com_content, Users.name FROM Comments, Users, Bugs WHERE Comments.user_ID LIKE Users.user_ID AND Comments.bug_ID LIKE Bugs.bug_ID AND Bugs.bug_ID LIKE $bugID";
                 $CommentResult = mysqli_query($conn, $CommentQuery);
