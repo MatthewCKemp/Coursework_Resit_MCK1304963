@@ -62,9 +62,7 @@
                                 if ($row['verified'] == 'YES') {
                                     $_SESSION['priv'] = "Admin";
                                     $_SESSION['verification_check'] = $row['verified'];
-                                    echo ", welcome administrator.";
-                                    echo $_SESSION['priv'];
-                                    echo $_SESSION['verification_check'];
+                                    echo ", welcome Administrator.";
                                 }else {
                                     $_SESSION['priv'] = "Developer";
                                     echo "<br>" . "To apply for admin priviliges please contact an existing administrator";
