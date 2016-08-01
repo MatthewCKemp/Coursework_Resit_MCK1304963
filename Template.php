@@ -71,7 +71,7 @@
     
                 if (mysqli_num_rows($CommentResult) > 0 ){
                     while ($CommentRows = mysqli_fetch_assoc($CommentResult)) { //Outputs data in each row.
-                        echo "<br>" . "<strong>" .$CommentRows["name"] . "</strong>" . ": " . $CommentRows["com_content"] . "<br>";
+                        echo "<br>" . "<strong>" .$CommentRows["name"] . "</strong>" . ": " . $CommentRows["com_content"] . "<br><br><br><br><br>";
                     }
                     echo"</table>";
                 } else {
