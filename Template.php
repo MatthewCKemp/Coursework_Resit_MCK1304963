@@ -90,7 +90,7 @@
                 $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
                 $UserID = mysqli_real_escape_string($conn,$_SESSION['login']);
                 
-                $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ('$CommentCreated', '$UserID', '$bugID')";
+                $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ($CommentCreated, $UserID, $bugID)";
                 
                 if(!empty($CommentCreated)AND !empty($UserID) AND !empty($bugID)) {
                     if (mysqli_query($conn, $CommentInsert)) {
