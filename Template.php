@@ -97,9 +97,9 @@
                 <?php
                 $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
                 
-                echo "Title: " . $_POST["Comment_New"];
-                echo $UserID;
-                echo $_SESSION['bugID'];
+                echo "Title: " . $_POST["Comment_New"] . "<br>";
+                echo "U_ID: " . $UserID . "<br>";
+                echo "B_ID" . $_SESSION['bugID'] . "<br>";
                     
                     if(isset($POST['Comment_New'])) {
 
