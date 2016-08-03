@@ -119,9 +119,8 @@
                     if ($_SESSION['priv'] = "Developer" OR ($_SESSION['priv'] = "admin")){; //Makes sure user is logged in.
                         if(isset($_POST['Delete'])){
                             $DELETE = "DELETE FROM Comments WHERE com_id = 1 ORDER BY com_ID DESC LIMIT 1";
-                            echo "<br>" . "Comment deleted. ";
+                            echo "<br>" . "Comment deleted. " . mysqli_error($conn);
                         }else {
-                            echo "<br>" . "button pressed";
                             echo "<br>" . "No comment to delete. " . mysqli_error($conn);
                         }
                     }else{
