@@ -115,12 +115,11 @@
                 }
                 ?>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                    <input type = "hidden" name="DeleteComment">
                     <input type = "submit" name ="Delete" value="Delete">
                 </form>
                 <?php
                     if(isset($POST['Delete'])){
-                        $DELETE = "DELETE FROM Comments, WHERE Comments.com_content LIKE $_SESSION[NewestComment])"; 
+                        $DELETE = "DELETE * FROM Comments, WHERE com_content LIKE $_SESSION[NewestComment])"; 
                         echo "<br>" . "Comment deleted. ";
                     }else{
                         echo "<br>" . "No comment to delete. " . mysqli_error($conn);
@@ -131,7 +130,7 @@
             </div>
         </div>
         <div id="footer">
-            <p><strong>Legal stuff</strong></p>
+            <p><strong>Website by Matthew.C.Kemp</strong></p>
         </div>
     </body>
 </html>
