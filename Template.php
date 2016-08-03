@@ -80,7 +80,7 @@
     
                 if (mysqli_num_rows($CommentResult) > 0 ){
                     while ($CommentRows = mysqli_fetch_assoc($CommentResult)) { //Outputs data in each row.
-                        echo "<br>" . "<strong>" .$CommentRows["name"] . "</strong>" . ": " . $CommentRows["com_content"] . "<br><br><br><br><br>";
+                        echo "<br>" . "<strong>" .$CommentRows["name"] . "</strong>" . ": " . $CommentRows["com_content"];
                     }
                     echo"</table>";
                 } else {
@@ -89,6 +89,7 @@
                 ?>
                 
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    <br><br><br><br><br>
                     Remember to use '@' to indicate who you are replying to:  <br>
                     Comment: <input type="text" name="CommentNew" required><br>
                     <input type="submit" value ="Comment"/><br/>
@@ -97,9 +98,9 @@
                 <?php
                 $CommentCreated = mysqli_real_escape_string($conn, $_POST["CommentNew"]);
                 
-                echo "Comment: " . $_POST["CommentNew"] . "<br>";
-                echo "U_ID: " . $UserID . "<br>";
-                echo "B_ID: " . $_SESSION['bugID'] . "<br>";
+                //echo "Comment: " . $_POST["CommentNew"] . "<br>"; //Debug variable displays
+                //echo "U_ID: " . $UserID . "<br>";
+                //echo "B_ID: " . $_SESSION['bugID'] . "<br>";
 
                 if (!empty($CommentCreated)) {
                     $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ('$CommentCreated', '$UserID', $_SESSION[bugID])";
