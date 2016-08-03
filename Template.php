@@ -22,13 +22,23 @@
             die(" Selection failed: " . mysqli_connect_error());
         }
         //echo " DB Selected successfully";
-        session_start();
 
-        //Query based on user selection pulls all required data
+        $bugID = $_GET["bugID"];
+        $Title = $_GET["title"];
+
+        if (isset($_GET["bugID"])) {
+            $_SESSION["bugID"] = $_GET["bugID"];
+        }
+        if (isset($_GET["title"])) {
+            $_SESSION["title"] = $_GET["title"];
+        }
+
+        $UserID = mysqli_real_escape_string($conn, $_SESSION['login']);
+
         ?>
     </head>
     <body>
-        <div id ="header"><?php echo $_GET["title"] ?></div>
+        <div id ="header"><?php echo$_SESSION["title"]; ?></div>
         <div id="navigation">
             <ul>
                 <p><strong>Links</strong></p>
@@ -42,8 +52,7 @@
             <div id="container">
                 <!--Bug info + creator and location-->
                 <?php
-                $bugID = $_GET["bugID"];
-                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Users.name, Users.country FROM Bugs, Users WHERE Bugs.user_ID LIKE Users.user_ID AND Bugs.bug_ID LIKE $bugID ";
+                $BugQuery = "SELECT Bugs.title, Bugs.description, Bugs.bugposted, Bugs.bugfixed, Users.name, Users.country FROM Bugs, Users WHERE Bugs.user_ID LIKE Users.user_ID AND Bugs.bug_ID LIKE $_SESSION[bugID] ";
                 $BugResult = mysqli_query($conn, $BugQuery);
 
                 if (mysqli_num_rows($BugResult) > 0 ){
@@ -66,7 +75,7 @@
             <div id="Com-container">
                 <p><strong>Comments</strong></p>
                 <?php
-                $CommentQuery = "SELECT Comments.com_content, Users.name FROM Comments, Users, Bugs WHERE Comments.user_ID LIKE Users.user_ID AND Comments.bug_ID LIKE Bugs.bug_ID AND Bugs.bug_ID LIKE $bugID";
+                $CommentQuery = "SELECT Comments.com_content, Users.name FROM Comments, Users, Bugs WHERE Comments.user_ID LIKE Users.user_ID AND Comments.bug_ID LIKE Bugs.bug_ID AND Bugs.bug_ID LIKE $_SESSION[bugID]";
                 $CommentResult = mysqli_query($conn, $CommentQuery);
     
                 if (mysqli_num_rows($CommentResult) > 0 ){
@@ -87,14 +96,12 @@
                
                 <?php
                 $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
-                $UserID = mysqli_real_escape_string($conn, $_SESSION['login']);
-                $bugID = $_GET["bugID"];
-
+                
                     if(isset($POST['Comment_New'])) {
 
-                    $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ('$CommentCreated', '$UserID', '$bugID')";
+                    $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ('$CommentCreated', '$UserID', $_SESSION[bugID])";
 
-                        if (!empty($CommentCreated) AND !empty($UserID) AND !empty($bugID)) {
+                        if (!empty($CommentCreated) AND !empty($UserID) AND !empty($_SESSION['bugID'])) {
                             if (mysqli_query($conn, $CommentInsert)) {
                                 echo "<br>" . "Your comment has been created successfully. ";
                             } else {
@@ -106,6 +113,8 @@
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <input type = "hidden" name="DeleteComment">
                     <input type = "submit" name ="submit" value="Delete">
+                    <input type = "hidden" name = "Bug_ID" value = $bugID
+                    <input type = "hidden" name = "Bug_name" value = $Title
                 </form>
                 <?php
                     if(isset($POST['DeleteComment'])){
