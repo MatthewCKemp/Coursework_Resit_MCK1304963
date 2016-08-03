@@ -95,7 +95,7 @@
                 </form>
                
                 <?php
-                //$CommentCreated = mysqli_real_escape_string($conn, $_POST["CommentNew"]);
+                $CommentCreated = mysqli_real_escape_string($conn, $_POST["CommentNew"]);
                 
                 echo "Comment: " . $_POST["CommentNew"] . "<br>";
                 echo "U_ID: " . $UserID . "<br>";
@@ -105,7 +105,7 @@
 
                     $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ('$CommentCreated', '$UserID', $_SESSION[bugID])";
 
-                        if (!empty($CommentCreated) AND !empty($UserID)) {
+                        if (!empty($CommentCreated)) {
                             if (mysqli_query($conn, $CommentInsert)) {
                                 echo "<br>" . "Your comment has been created successfully. ";
                             } else {
