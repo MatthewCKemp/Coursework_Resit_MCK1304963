@@ -91,12 +91,16 @@
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     Remember to use '@' to indicate who you are replying to:  <br>
                     Comment: <input type="text" name="Comment_New" required><br>
-                    <input type="submit" value ="Post"/><br/>
+                    <input type="submit" value ="Comment"/><br/>
                 </form>
                
                 <?php
                 $CommentCreated = mysqli_real_escape_string($conn, $_POST["Comment_New"]);
                 
+                echo "Title: " . $_POST["Comment_New"];
+                echo $UserID;
+                echo $_SESSION['bugID'];
+                    
                     if(isset($POST['Comment_New'])) {
 
                     $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ('$CommentCreated', '$UserID', $_SESSION[bugID])";
