@@ -97,12 +97,10 @@
                
                 <?php
                 $CommentCreated = mysqli_real_escape_string($conn, $_POST["CommentNew"]);
-                $_SESSION["NewestComment"] = $CommentCreated;
 
                 //echo "Comment: " . $_POST["CommentNew"] . "<br>"; //Debug variable displays
                 //echo "U_ID: " . $UserID . "<br>";
                 //echo "B_ID: " . $_SESSION['bugID'] . "<br>";
-                echo "DollaS_Comment: " . $_SESSION['NewestComment'] . "<br>";
 
                 if (!empty($CommentCreated)) {
                     $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ('$CommentCreated', '$UserID', $_SESSION[bugID])";
