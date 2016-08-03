@@ -118,14 +118,17 @@
                     <input type = "submit" name ="Delete" value="Delete">
                 </form>
                 <?php
-                    if(isset($POST['Delete'])){
-                        $DELETE = "DELETE FROM Comments, WHERE com_content LIKE $_SESSION[NewestComment] LIMIT 1)"; 
-                        echo "<br>" . "Comment deleted. ";
+                    if ($_SESSION['priv'] = "Developer"){;
+                        if(isset($_POST['Delete'])){
+                            $DELETE = "DELETE FROM Comments, WHERE com_content LIKE $_SESSION[NewestComment] LIMIT 1)";
+                            echo "<br>" . "Comment deleted. ";
+                        }else {
+                            echo "<br>" . "button pressed";
+                            echo "<br>" . "No comment to delete. " . mysqli_error($conn);
+                        }
                     }else{
-                        echo "<br>" . "button pressed";
-                        echo "<br>" . "No comment to delete. " . mysqli_error($conn);
+                        echo "<br>" . "You must be logged in to comment.";
                     }
-
                 mysqli_close($conn);
                 ?>
             </div>
