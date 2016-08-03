@@ -97,7 +97,7 @@
                
                 <?php
                 $CommentCreated = mysqli_real_escape_string($conn, $_POST["CommentNew"]);
-                $_SESSION["NewestComment"] = mysqli_real_escape_string($conn, $_POST["CommentNew"]);
+                $_SESSION["NewestComment"] = $CommentCreated;
 
                 //echo "Comment: " . $_POST["CommentNew"] . "<br>"; //Debug variable displays
                 //echo "U_ID: " . $UserID . "<br>";
@@ -119,9 +119,10 @@
                 </form>
                 <?php
                     if(isset($POST['Delete'])){
-                        $DELETE = "DELETE * FROM Comments, WHERE com_content LIKE $_SESSION[NewestComment])"; 
+                        $DELETE = "DELETE FROM Comments, WHERE com_content LIKE $_SESSION[NewestComment] LIMIT 1)"; 
                         echo "<br>" . "Comment deleted. ";
                     }else{
+                        echo "<br>" . "button pressed";
                         echo "<br>" . "No comment to delete. " . mysqli_error($conn);
                     }
 
