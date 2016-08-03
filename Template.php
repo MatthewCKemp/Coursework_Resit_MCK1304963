@@ -100,19 +100,16 @@
                 echo "Comment: " . $_POST["CommentNew"] . "<br>";
                 echo "U_ID: " . $UserID . "<br>";
                 echo "B_ID: " . $_SESSION['bugID'] . "<br>";
-                    
-                    if(isset($POST['CommentNew'])) {
 
+                if (!empty($CommentCreated)) {
                     $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ('$CommentCreated', '$UserID', $_SESSION[bugID])";
-
-                        if (!empty($CommentCreated)) {
-                            if (mysqli_query($conn, $CommentInsert)) {
-                                echo "<br>" . "Your comment has been created successfully. ";
-                            } else {
-                                echo "<br>" . "ERROR: You must login to comment. " . "<br>" . mysqli_error($conn);
-                            }
-                        }
+                    if (mysqli_query($conn, $CommentInsert)) {
+                        echo "<br>" . "Your comment has been created successfully. ";
+                    } else {
+                        echo "<br>" . "ERROR: You must login to comment. " . "<br>" . mysqli_error($conn);
                     }
+                        
+                }
                 ?>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <input type = "hidden" name="DeleteComment">
