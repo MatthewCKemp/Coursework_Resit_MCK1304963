@@ -90,14 +90,14 @@
                 
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     Remember to use '@' to indicate who you are replying to:  <br>
-                    Comment: <input type="text" name="Comment_New" required><br>
+                    Comment: <input type="text" name="CommentNew" required><br>
                     <input type="submit" value ="Comment"/><br/>
                 </form>
                
                 <?php
                 //$CommentCreated = mysqli_real_escape_string($conn, $_POST["CommentNew"]);
                 
-                echo "Comment: " . $_POST["Comment_New"] . "<br>";
+                echo "Comment: " . $_POST["CommentNew"] . "<br>";
                 echo "U_ID: " . $UserID . "<br>";
                 echo "B_ID: " . $_SESSION['bugID'] . "<br>";
                     
