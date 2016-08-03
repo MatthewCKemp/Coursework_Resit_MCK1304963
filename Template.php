@@ -126,6 +126,22 @@
                     }else{
                         echo "<br>" . "You must be logged in to comment.";
                     }
+                ?>
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    <input type = "submit" name ="AdminDelete" value="ADMIN TOOL: Delete All">
+                </form>
+
+                <?php
+                    if ($_SESSION['priv'] = "admin"){; //Makes sure user is an admin.
+                        if(isset($_POST['AdminDelete'])){
+                            $DELETE = "DELETE * FROM Comments WHERE com_id LIKE $_SESSION[bugID]";
+                            echo "<br>" . "All comments deleted. " . mysqli_error($conn);
+                        }else {
+                            echo "<br>" . "Delete failed. " . mysqli_error($conn);
+                        }
+                    }else{
+                        echo "<br>" . "You must be an admin to perform this action.";
+                    }
                 mysqli_close($conn);
                 ?>
             </div>
