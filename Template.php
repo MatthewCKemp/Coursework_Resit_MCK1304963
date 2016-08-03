@@ -118,9 +118,9 @@
                     <input type = "submit" name ="Delete" value="Delete">
                 </form>
                 <?php
-                    if ($_SESSION['priv'] = "Developer"){;
+                    if ($_SESSION['priv'] = "Developer" OR ($_SESSION['priv'] = "admin")){; //Makes sure user is logged in.
                         if(isset($_POST['Delete'])){
-                            $DELETE = "DELETE FROM Comments, WHERE com_content LIKE $_SESSION[NewestComment] LIMIT 1)";
+                            $DELETE = "DELETE FROM Comments WHERE com_id = 1 ORDER BY com_ID DESC LIMIT 1";
                             echo "<br>" . "Comment deleted. ";
                         }else {
                             echo "<br>" . "button pressed";
