@@ -97,10 +97,12 @@
                
                 <?php
                 $CommentCreated = mysqli_real_escape_string($conn, $_POST["CommentNew"]);
-                
+                $_SESSION["NewestComment"] = mysqli_real_escape_string($conn, $_POST["CommentNew"]);
+
                 //echo "Comment: " . $_POST["CommentNew"] . "<br>"; //Debug variable displays
                 //echo "U_ID: " . $UserID . "<br>";
                 //echo "B_ID: " . $_SESSION['bugID'] . "<br>";
+                echo "DollaS_Comment: " . $_SESSION['NewestComment'] . "<br>";
 
                 if (!empty($CommentCreated)) {
                     $CommentInsert = "INSERT INTO Comments (com_content, user_ID, bug_ID) VALUES ('$CommentCreated', '$UserID', $_SESSION[bugID])";
@@ -114,11 +116,11 @@
                 ?>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <input type = "hidden" name="DeleteComment">
-                    <input type = "submit" name ="submit" value="Delete">
+                    <input type = "submit" name ="Delete" value="Delete">
                 </form>
                 <?php
-                    if(isset($POST['DeleteComment'])){
-                        $DELETE = "DELETE FROM Comments WHERE com_ID = $NewestComment";
+                    if(isset($POST['Delete'])){
+                        $DELETE = "DELETE FROM Comments, WHERE Comments.com_content LIKE $_SESSION[NewestComment])"; 
                         echo "<br>" . "Comment deleted. ";
                     }else{
                         echo "<br>" . "No comment to delete. " . mysqli_error($conn);
