@@ -113,8 +113,6 @@
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <input type = "hidden" name="DeleteComment">
                     <input type = "submit" name ="submit" value="Delete">
-                    <input type = "hidden" name = "Bug_ID" value = $bugID
-                    <input type = "hidden" name = "Bug_name" value = $Title
                 </form>
                 <?php
                     if(isset($POST['DeleteComment'])){
