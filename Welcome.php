@@ -51,7 +51,27 @@
                         } else {
                             echo "no results found";
                         }
-                        echo "currently logged in as " . $_SESSION['login'];
+                        ?>
+
+                        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                            Enter the title of the Bug to delete: <input type = "text" name ="BugChoice">
+                            <input type = "submit" name ="AdminDeleteBug" value="ADMIN TOOL: Delete bug">
+                        </form>
+
+                        <?php
+
+                        $BugToDelete = mysqli_real_escape_string($conn, $_POST["BugChoice"]);
+
+                        if ($_SESSION['priv'] = "Admin"){; //Makes sure user is an admin.
+                            if(isset($_POST['AdminDeleteBug'])){
+                                $DELETE = "DELETE FROM Bugs WHERE title LIKE BugToDelete";
+                                echo "<br>" . "Bug deleted. ";
+                            }else {
+                                echo "<br>" . "Delete failed. " . mysqli_error($conn);
+                            }
+                        }else{
+                            echo "<br>" . "You must be an admin to perform this action.";
+                        }
                         mysqli_close($conn);
                         ?>
                 </div>
