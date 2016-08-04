@@ -132,7 +132,7 @@
                 </form>
 
                 <?php
-                    if ($_SESSION['priv'] = "admin"){; //Makes sure user is an admin.
+                    if ($_SESSION['priv'] = "Admin"){; //Makes sure user is an admin.
                         if(isset($_POST['AdminDelete'])){
                             $DELETE = "DELETE * FROM Comments WHERE com_id LIKE $_SESSION[bugID]";
                             echo "<br>" . "All comments deleted. " . mysqli_error($conn);
