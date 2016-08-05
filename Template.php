@@ -129,12 +129,15 @@
                     <input type = "submit" name ="Delete" value="Delete">
                 </form>
                 <?php
-                    if ($_SESSION['priv'] = "Developer" OR ($_SESSION['priv'] = "admin")){; //Makes sure user is logged in.
-                        if(isset($_POST['Delete'])){
+                    if ($_SESSION['priv'] = "Developer" OR ($_SESSION['priv'] = "admin")) {
+                        ; //Makes sure user is logged in.
+                        if (isset($_POST['Delete'])) {
                             $DELETE = "DELETE FROM Comments WHERE com_id = 1 ORDER BY com_ID DESC LIMIT 1";
-                            echo "<br>" . "Comment deleted. " . mysqli_error($conn);
-                        }else {
-                            echo "<br>" . "No comment to delete. " . mysqli_error($conn);
+                            if (mysqli_query($conn, $DELETE)){
+                                echo "<br>" . "Comment deleted. " . mysqli_error($conn);
+                            } else {
+                                echo "<br>" . "No comment to delete. " . mysqli_error($conn);
+                            }
                         }
                     }else{
                         echo "<br>" . "You must be logged in to comment.";
@@ -146,11 +149,13 @@
 
                 <?php
                     if ($_SESSION['priv'] = "Admin"){; //Makes sure user is an admin.
-                        if(isset($_POST['AdminDelete'])){
-                            $DELETE = "DELETE * FROM Comments WHERE com_id LIKE $_SESSION[bugID]";
-                            echo "<br>" . "All comments deleted. " . mysqli_error($conn);
-                        }else {
-                            echo "<br>" . "Delete failed. " . mysqli_error($conn);
+                        if(isset($_POST['AdminDelete'])) {
+                            $DELETEADMIN = "DELETE * FROM Comments WHERE com_id LIKE $_SESSION[bugID]";
+                            if (mysqli_query($conn, $DELETE)) {
+                                echo "<br>" . "All comments deleted. " . mysqli_error($conn);
+                            } else {
+                                echo "<br>" . "Delete failed. " . mysqli_error($conn);
+                            }
                         }
                     }else{
                         echo "<br>" . "You must be an admin to perform this action.";
