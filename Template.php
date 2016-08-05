@@ -73,11 +73,13 @@
                     <input type = "submit" name ="solved" value="Bug is solved">
                 </form>
                 <?php
-                if(isset($_POST['solved'])){
-                        $BugSolved = "INSERT INTO Bugs (bugfixed) VALUES (CURRENT_DATE())";
+                if(isset($_POST['solved'])) {
+                    $BugSolved = "INSERT INTO Bugs (bugfixed) VALUES (CURRENT_DATE())";
+                    if (mysqli_query($conn, $BugSolved)) {
                         echo "<br>" . "Bug has been solved. " . mysqli_error($conn);
-                    }else {
+                    } else {
                         echo "<br>" . "error updating status. " . mysqli_error($conn);
+                    }
                 }
                 ?>
             </div>
