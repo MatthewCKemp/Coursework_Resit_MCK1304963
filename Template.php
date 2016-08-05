@@ -74,7 +74,7 @@
                 </form>
                 <?php
                 if(isset($_POST['solved'])) {
-                    $BugSolved = "INSERT INTO Bugs (bugfixed) VALUES (CURRENT_DATE())";
+                    $BugSolved = "INSERT INTO Bugs (bugfixed) VALUES (CURRENT_DATE() WHERE bug_ID = $_SESSION[bugID] )";
                     if (mysqli_query($conn, $BugSolved)) {
                         echo "<br>" . "Bug has been solved. " . mysqli_error($conn);
                     } else {
@@ -151,7 +151,7 @@
                     if ($_SESSION['priv'] = "Admin"){; //Makes sure user is an admin.
                         if(isset($_POST['AdminDelete'])) {
                             $DELETEADMIN = "DELETE * FROM Comments WHERE com_id LIKE $_SESSION[bugID]";
-                            if (mysqli_query($conn, $DELETE)) {
+                            if (mysqli_query($conn, $DELETEADMIN)) {
                                 echo "<br>" . "All comments deleted. " . mysqli_error($conn);
                             } else {
                                 echo "<br>" . "Delete failed. " . mysqli_error($conn);
