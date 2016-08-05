@@ -69,6 +69,17 @@
                     echo "An error has occurred. This bug does not exist." . mysqli_error($conn);
                 }
                 ?>
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    <input type = "submit" name ="solved" value="Bug is solved">
+                </form>
+                <?php
+                if(isset($_POST['solved'])){
+                        $BugSolved = "INSERT INTO Bugs (datesolved) VALUES (CURRENT_DATE())";
+                        echo "<br>" . "Bug has been solved. " . mysqli_error($conn);
+                    }else {
+                        echo "<br>" . "error updating status. " . mysqli_error($conn);
+                }
+                ?>
             </div>
         </div>
         <div id="comments">
