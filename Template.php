@@ -74,7 +74,7 @@
                 </form>
                 <?php
                 if(isset($_POST['solved'])){
-                        $BugSolved = "INSERT INTO Bugs (datesolved) VALUES (CURRENT_DATE())";
+                        $BugSolved = "INSERT INTO Bugs (bugfixed) VALUES (CURRENT_DATE())";
                         echo "<br>" . "Bug has been solved. " . mysqli_error($conn);
                     }else {
                         echo "<br>" . "error updating status. " . mysqli_error($conn);
